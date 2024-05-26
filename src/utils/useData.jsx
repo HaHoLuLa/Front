@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { data as dummy } from "../dummy/data";
 import axios from "axios";
 
+// 더미용
 export const useSetDummyData = () => {
   const [ data, setData ] = useState([]);
   useEffect(() => {
@@ -11,13 +12,23 @@ export const useSetDummyData = () => {
   return data
 }
 
+/**
+ * 입력 받은 URL에 GET 요청을 날리는 훅
+ * @param {string} url 스프링부트 GET 매핑 URL
+ * @returns 요청 후 받은 데이타
+ */
 export const useGetData = (url) => {
-  const [ data, setData ] = useState([]);
+  const [ data, setData ] = useState(null);
+  const [ request, setRequest ] = useState(false);
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_URL}${url}`)
-    .then(res => setData(res.data))
-    .catch(e => console.error(e))
-  }, [url])
+    if (!request) {
+      setRequest(true)
+      axios.get(`${process.env.REACT_APP_URL}${url}`)
+      .then(res => setData(res.data))
+      .catch(e => console.error(e))
+    }
+
+  }, [url, request])
 
   return data
 }
@@ -29,39 +40,47 @@ export const useGetData = (url) => {
  * @returns 요청 후 받은 데이터
 */
 export const usePostData = (url, postdata) => {
-  const [ data, setData ] = useState([]);
+  const [ data, setData ] = useState(null);
+  const [ request, setRequest ] = useState(false);
   useEffect(() => {
-    axios.post(`${process.env.REACT_APP_URL}${url}`, postdata)
-    .then(res => setData(res.data))
-    .catch(e => console.error(e))
-    setData()
-  }, [url, postdata])
+    if (!request) {
+      setRequest(true)
+      axios.post(`${process.env.REACT_APP_URL}${url}`, postdata)
+      .then(res => setData(res.data))
+      .catch(e => console.error(e))
+    }
+  }, [url, postdata, request])
 
   return data
 }
 
+// 사용 불가
 export const useTrigGetData = (url, trigger) => {
-  const [ data, setData ] = useState([]);
+  const [ data, setData ] = useState(null);
+  const [ trig, setTrig ] = useState(trigger)
   useEffect(() => {
-    if (trigger) {
+    if (trig) {
+      setTrig(!trig)
       axios.get(`${process.env.REACT_APP_URL}${url}`)
       .then(res => setData(res.data))
       .catch(e => console.error(e))
     }
-  }, [url, trigger])
+  }, [url, trig])
 
   return data
 }
 
+// 너도 불가
 export const useTrigPostData = (url, postdata, trigger) => {
-  const [ data, setData ] = useState([]);
+  const [ data, setData ] = useState(null);
+  const [ trig, setTrig ] = useState(trigger)
   useEffect(() => {
-    if (trigger) {
+    if (trig) {
+      setTrig(!trig)
       axios.post(`${process.env.REACT_APP_URL}${url}`, postdata)
       .then(res => setData(res.data))
       .catch(e => console.error(e))
-      setData()
     }
-  }, [url, postdata, trigger])
+  }, [url, postdata, trig])
   return data
 }

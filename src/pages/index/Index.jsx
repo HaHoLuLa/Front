@@ -5,14 +5,16 @@ import EventCart from "./components/EventCart"
 import Ad from "./components/Ad"
 import Location from  "./components/Location"
 import Recommend from "../../components/Recommend"
-import { useSetDummyData } from "../../utils/useData"
+import { useSetDummyData, useGetData } from "../../utils/useData"
 
 export default function Index() {
   const data = useSetDummyData();
   // const data0 = data.filter((i) => i.hType === 0)
-  const data1 = data.filter((i) => i.hType === 1)
-  const data2 = data.filter((i) => i.hType === 2)
+  const data1 = data.filter((i) => i.hType === 1);
+  const data2 = data.filter((i) => i.hType === 2);
+  const realData = useGetData("/main/get-hotel?type=2");
   // const data3 = data.filter((i) => i.hType === 3)
+  console.log(realData);
   
   return (
     <main>

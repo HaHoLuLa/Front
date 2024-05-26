@@ -4,17 +4,17 @@
   border-top: none;
 }
 
-.upload-form > div:first-child {
+.upload-form > .upload-menu {
   display: flex;
   justify-content: space-between;
 }
 
-.upload-form > div:not(:first-child) {
+.upload-form > .upload-content {
   margin-top: 20px;
   display: flex;
 }
 
-.upload-form > div:not(:first-child) > div:first-child {
+.upload-form > .upload-content > .map-wrapper {
   width: 70%;
   height: 500px;
 }
@@ -24,14 +24,39 @@
   height: 500px;
 }
 
-.upload-form > div:not(:first-child) > div:not(:first-child) > div:first-child {
+.upload-form > .upload-content > .search-menu {
+  width: 30%;
   border: solid 1px #ccc;
 }
 
-.upload-form > div:not(:first-child) > div:not(:first-child) > div:first-child > input {
-  border: none;
+.search-bar-wrapper {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.upload-form > div:not(:first-child) > div:not(:first-child) > div:first-child > input:focus {
+.upload-form > .upload-content > .search-menu > .search-bar-wrapper > .upload-search-bar {
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  width: 80%;
+  border: solid 1px #ccc;
+}
+
+.upload-search-bar > i {
+  width: auto;
+}
+
+.upload-search-bar > input {
+  border: none;
+  flex: 1;
+}
+
+.upload-search-bar > input:focus {
   outline: none;
+}
+
+.search-result {
+  overflow-y: auto;
 }

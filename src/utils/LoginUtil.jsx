@@ -1,12 +1,14 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 export default function LoginUtil() {
-  const [ data, setData ] = useState({});
+  const [ data, setData ] = useState("");
   const [ form, setForm ] = useState({
     id: '',
     pw: ''
   });
+  const nav = useNavigate();
   
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,7 +20,7 @@ export default function LoginUtil() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post(`${process.env.REACT_APP_URL}/member/login`,
+    await axios.post(`${process.env.REACT_APP_URL}/login/login`,
     form, {
       withCredentials: true,
     })
@@ -29,7 +31,12 @@ export default function LoginUtil() {
     .catch(e => console.error(e));
   }
 
-  console.log(data)
+  // console.log(data)
+  useEffect(() => {
+    if (data.id) {
+      nav("/")
+    }
+  }, [data.id, nav])
 
   return (
     <>
@@ -45,7 +52,8 @@ export default function LoginUtil() {
       </div>
       <button>로그인</button>
     </form>
-    {/* {data.user !== "null" ? <>반갑습니다. {data.user} </> : <>다시시도하십쇼</>} */}
+    {/* {data.id !== "null" ? <>반갑습니다. {data.name} </> : <>다시시도하십쇼</>} */}
+    {/* {data ? data : ""} */}
     </>
   )
 }

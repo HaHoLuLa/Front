@@ -8,6 +8,7 @@ export let data = [
     rPeople: 4,
   },
   {
+    hNum: 2,
     hName: "호텔2",
     hType: 1,
     hpUrl: "/img/hotel2.png",
@@ -15,6 +16,7 @@ export let data = [
     rPeople: 2,
   },
   {
+    hNum: 3,
     hName: "호텔3",
     hType: 2,
     hpUrl: "/img/hotel3.png",
@@ -22,6 +24,7 @@ export let data = [
     rPeople: 6,
   },
   {
+    hNum: 4,
     hName: "호텔4",
     hType: 3,
     hpUrl: "/img/hotel4.png",
@@ -29,6 +32,7 @@ export let data = [
     rPeople: 3,
   },
   {
+    hNum: 5,
     hName: "호텔5",
     hType: 0,
     hpUrl: "/img/hotel5.png",
@@ -36,6 +40,7 @@ export let data = [
     rPeople: 5,
   },
   {
+    hNum: 6,
     hName: "호텔6",
     hType: 1,
     hpUrl: "/img/hotel6.png",
@@ -43,6 +48,7 @@ export let data = [
     rPeople: 4,
   },
   {
+    hNum: 7,
     hName: "호텔7",
     hType: 2,
     hpUrl: "/img/hotel7.png",
@@ -50,6 +56,7 @@ export let data = [
     rPeople: 8,
   },
   {
+    hNum: 8,
     hName: "호텔8",
     hType: 3,
     hpUrl: "/img/hotel8.png",
@@ -57,6 +64,7 @@ export let data = [
     rPeople: 2,
   },
   {
+    hNum: 9,
     hName: "호텔9",
     hType: 0,
     hpUrl: "/img/hotel9.png",
@@ -64,6 +72,7 @@ export let data = [
     rPeople: 6,
   },
   {
+    hNum: 10,
     hName: "호텔10",
     hType: 1,
     hpUrl: "/img/hotel10.png",
@@ -71,6 +80,7 @@ export let data = [
     rPeople: 3,
   },
   {
+    hNum: 11,
     hName: "호텔11",
     hType: 2,
     hpUrl: "/img/hotel11.png",
@@ -78,6 +88,7 @@ export let data = [
     rPeople: 7,
   },
   {
+    hNum: 12,
     hName: "호텔12",
     hType: 3,
     hpUrl: "/img/hotel12.png",
@@ -85,6 +96,7 @@ export let data = [
     rPeople: 3,
   },
   {
+    hNum: 13,
     hName: "호텔13",
     hType: 0,
     hpUrl: "/img/hotel13.png",
@@ -92,6 +104,7 @@ export let data = [
     rPeople: 5,
   },
   {
+    hNum: 14,
     hName: "호텔14",
     hType: 1,
     hpUrl: "/img/hotel14.png",
@@ -99,6 +112,7 @@ export let data = [
     rPeople: 2,
   },
   {
+    hNum: 15,
     hName: "호텔15",
     hType: 2,
     hpUrl: "/img/hotel15.png",
@@ -106,6 +120,7 @@ export let data = [
     rPeople: 6,
   },
   {
+    hNum: 16,
     hName: "호텔16",
     hType: 3,
     hpUrl: "/img/hotel16.png",
@@ -113,6 +128,7 @@ export let data = [
     rPeople: 4,
   },
   {
+    hNum: 17,
     hName: "호텔17",
     hType: 0,
     hpUrl: "/img/hotel17.png",
@@ -120,6 +136,7 @@ export let data = [
     rPeople: 8,
   },
   {
+    hNum: 18,
     hName: "호텔18",
     hType: 1,
     hpUrl: "/img/hotel18.png",
@@ -127,6 +144,7 @@ export let data = [
     rPeople: 3,
   },
   {
+    hNum: 19,
     hName: "호텔19",
     hType: 2,
     hpUrl: "/img/hotel19.png",
@@ -134,6 +152,7 @@ export let data = [
     rPeople: 7,
   },
   {
+    hNum: 20,
     hName: "호텔20",
     hType: 3,
     hpUrl: "/img/hotel20.png",
@@ -141,6 +160,7 @@ export let data = [
     rPeople: 5,
   },
   {
+    hNum: 21,
     hName: "호텔21",
     hType: 0,
     hpUrl: "/img/hotel21.png",
@@ -148,6 +168,7 @@ export let data = [
     rPeople: 6,
   },
   {
+    hNum: 22,
     hName: "호텔22",
     hType: 1,
     hpUrl: "/img/hotel22.png",
@@ -155,6 +176,7 @@ export let data = [
     rPeople: 2,
   },
   {
+    hNum: 23,
     hName: "호텔23",
     hType: 2,
     hpUrl: "/img/hotel23.png",
@@ -162,6 +184,7 @@ export let data = [
     rPeople: 5,
   },
   {
+    hNum: 24,
     hName: "호텔24",
     hType: 3,
     hpUrl: "/img/hotel24.png",
@@ -169,6 +192,7 @@ export let data = [
     rPeople: 3,
   },
   {
+    hNum: 25,
     hName: "호텔25",
     hType: 0,
     hpUrl: "/img/hotel25.png",
@@ -176,6 +200,7 @@ export let data = [
     rPeople: 4,
   },
   {
+    hNum: 26,
     hName: "호텔26",
     hType: 1,
     hpUrl: "/img/hotel26.png",
@@ -183,6 +208,7 @@ export let data = [
     rPeople: 3,
   },
   {
+    hNum: 27,
     hName: "호텔27",
     hType: 2,
     hpUrl: "/img/hotel27.png",
@@ -190,6 +216,7 @@ export let data = [
     rPeople: 7,
   },
   {
+    hNum: 28,
     hName: "호텔28",
     hType: 3,
     hpUrl: "/img/hotel28.png",
@@ -197,6 +224,7 @@ export let data = [
     rPeople: 2,
   },
   {
+    hNum: 29,
     hName: "호텔29",
     hType: 0,
     hpUrl: "/img/hotel29.png",
@@ -204,6 +232,7 @@ export let data = [
     rPeople: 5,
   },
   {
+    hNum: 30,
     hName: "호텔30",
     hType: 1,
     hpUrl: "/img/hotel30.png",
@@ -211,6 +240,7 @@ export let data = [
     rPeople: 3,
   },
   {
+    hNum: 31,
     hName: "호텔31",
     hType: 2,
     hpUrl: "/img/hotel31.png",
@@ -218,6 +248,7 @@ export let data = [
     rPeople: 6,
   },
   {
+    hNum: 32,
     hName: "호텔32",
     hType: 3,
     hpUrl: "/img/hotel32.png",
@@ -225,6 +256,7 @@ export let data = [
     rPeople: 4,
   },
   {
+    hNum: 33,
     hName: "호텔33",
     hType: 0,
     hpUrl: "/img/hotel33.png",
@@ -232,6 +264,7 @@ export let data = [
     rPeople: 3,
   },
   {
+    hNum: 34,
     hName: "호텔34",
     hType: 1,
     hpUrl: "/img/hotel34.png",
@@ -239,6 +272,7 @@ export let data = [
     rPeople: 2,
   },
   {
+    hNum: 35,
     hName: "호텔35",
     hType: 2,
     hpUrl: "/img/hotel35.png",
@@ -246,6 +280,7 @@ export let data = [
     rPeople: 8,
   },
   {
+    hNum: 36,
     hName: "호텔36",
     hType: 3,
     hpUrl: "/img/hotel36.png",
@@ -253,6 +288,7 @@ export let data = [
     rPeople: 5,
   },
   {
+    hNum: 37,
     hName: "호텔37",
     hType: 0,
     hpUrl: "/img/hotel37.png",
@@ -260,6 +296,7 @@ export let data = [
     rPeople: 4,
   },
   {
+    hNum: 38,
     hName: "호텔38",
     hType: 1,
     hpUrl: "/img/hotel38.png",
@@ -267,6 +304,7 @@ export let data = [
     rPeople: 3,
   },
   {
+    hNum: 39,
     hName: "호텔39",
     hType: 2,
     hpUrl: "/img/hotel39.png",
@@ -274,6 +312,7 @@ export let data = [
     rPeople: 7,
   },
   {
+    hNum: 40,
     hName: "호텔40",
     hType: 3,
     hpUrl: "/img/hotel40.png",

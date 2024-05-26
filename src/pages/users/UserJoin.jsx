@@ -1,6 +1,15 @@
+import { useState } from "react";
 import "../../styles/userJoin.css"
 
 export default function UserJoin() {
+    const [ act, setAct ] = useState(false);
+    const handleOpenPopUp = () => {
+        if (!act) {
+            setAct(true)
+        }
+        window.open("/identify", "_blank", "width=500px, height=500px")
+    }
+
     return (
         <main>
             <div className="user-login-box" style={{ marginTop: "50px" }}>
@@ -8,12 +17,12 @@ export default function UserJoin() {
 
                 <h2>본인 인증</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <button className="user-check-btn">본인 인증 확인</button>
+                    <button className="user-check-btn" onClick={handleOpenPopUp}>본인 인증 확인</button>
                 </div>
                 
                 <h2>이름</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <input className="user-basic-bar" type="text" name placeholder="이름을 입력하세요" />
+                    <input className="user-basic-bar" type="text" placeholder="이름을 입력하세요" />
                 </div>
 
                 <h2>이메일</h2>
@@ -39,7 +48,7 @@ export default function UserJoin() {
 
                 <h2>개인정보 수집 및 이용 동의서</h2>
                 <div className="user-info-box">
-                    <p>개인정보 수집 ∙ 이용에 대한 동의<hr />
+                    <p>개인정보 수집 ∙ 이용에 대한 동의</p><hr /><p>
                         <br />
                         수집하는 개인정보 항목<br /><br />
 

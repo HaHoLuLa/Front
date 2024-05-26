@@ -121,6 +121,7 @@ a:focus {
 }
 
 .header-nav>span {
+  cursor: pointer;
   text-align: center;
   flex-grow: 1;
   margin: 5px;

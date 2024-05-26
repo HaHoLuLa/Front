@@ -20,7 +20,7 @@ export default function Recommend({style, data, id, title, sub}) {
           navigation={{prevEl: `#prev${id}`, nextEl: `#next${id}`}}
         >
           {data.map((i, index) => (
-          <SwiperSlide key={index} onClick={() => nav(`/room/${i.hName}`)}>
+          <SwiperSlide key={index} onClick={() => nav(`/room/${i.hNum}`)}>
 
             <div className="recommend-object">
 
