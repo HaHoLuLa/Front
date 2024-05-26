@@ -51,3 +51,14 @@ export default function App() {
   )
 }
 ```
+
+---
+### 패키지 목록
+- react-google-maps/api
+- stomp/stompjs
+- axios
+- quill
+- react-quill
+- react-helmet-async
+- react-router-dom
+- swiper
