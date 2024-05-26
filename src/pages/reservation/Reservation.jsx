@@ -23,7 +23,7 @@ function Reservation() {
                         <div className="res-div">
                             <div>
                                 <div className="res-name-div">
-                                    <img className="res-img" src="https://i.travelapi.com/lodging/1000000/490000/481300/481277/3d487938_z.jpg"></img>
+                                    <img className="res-img" src="https://i.travelapi.com/lodging/1000000/490000/481300/481277/3d487938_z.jpg" alt=""></img>
                                     <h3>{"토부 호텔 레밴트 도쿄(Tobu Hotel Levant Tokyo)"}</h3>
                                 </div>
                                 <div className="checkInOut">
@@ -83,21 +83,21 @@ function Reservation() {
                                     </div>
                                 </div>
                                 <div className="payInfoSpaceBetween">
-                                    <u onClick={() => setAct(true)} style={{ marginTop: "10px", marginBottom: "10px", color: "gray" }}>숙소에 대해 알아두실 사항<img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_info_12x12_line_gray_500.svg" /></u>
+                                    <u onClick={() => setAct(true)} style={{ marginTop: "10px", marginBottom: "10px", color: "gray" }}>숙소에 대해 알아두실 사항<img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_info_12x12_line_gray_500.svg" alt=""/></u>
                                 </div>
                                 <h2 style={{ marginTop: "50px" }}>약관 안내<hr /></h2>
                                 <div className="payInfoClause">
                                     <div  onClick={() => setAct1(true)} className="payInfoClauseSpaceBetween">
                                         <span>개인정보 수집 및 이용 동의 (필수)</span>
-                                        <img className="payInfoClauseSpaceBetweenImg" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_arrowright_md_gray_300.svg"></img>
+                                        <img className="payInfoClauseSpaceBetweenImg" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_arrowright_md_gray_300.svg" alt=""></img>
                                     </div>
                                     <div  onClick={() => setAct2(true)} className="payInfoClauseSpaceBetween">
                                         <span>개인정보 제공 동의 (필수)</span>
-                                        <img className="payInfoClauseSpaceBetweenImg" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_arrowright_md_gray_300.svg"></img>
+                                        <img className="payInfoClauseSpaceBetweenImg" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_arrowright_md_gray_300.svg" alt=""></img>
                                     </div>
                                     <div onClick={() => setAct3(true)} className="payInfoClauseSpaceBetween" style={{ marginBottom: "0px" }}>
                                         <span>개인정보 국외 이전 동의 (필수)</span>
-                                        <img className="payInfoClauseSpaceBetweenImg" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_arrowright_md_gray_300.svg"></img>
+                                        <img className="payInfoClauseSpaceBetweenImg" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_arrowright_md_gray_300.svg" alt=""></img>
                                     </div>
                                 </div>
                                 <p style={{ marginTop: "20px", marginBottom: "20px", color: "gray" }}>위 약관을 확인하였으며, 회원 본인은 약관 및 결제에 동의합니다.</p>

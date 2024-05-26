@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import "../../styles/resInfoModal1.css"
-import { useNavigate } from "react-router-dom";
 
-const ResInfoModal1 = ({act1, setAct1}) => { 
-  const nav = useNavigate();
+const ResInfoModal1 = ({act1, setAct1}) => {
 
   useEffect(() => {
     if (act1) {
