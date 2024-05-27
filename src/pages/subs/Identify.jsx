@@ -5,10 +5,17 @@
 export default function Identify() {
   
   
-  const handleSubmit = () => {
-    alert("본인 인증에 성공하였습니다.")
+  const handleSubmit = (e) => {
+    // alert("본인 인증에 성공하였습니다.")
     
-    window.close()
+    // window.close()
+    e.preventDefault()
+    if (window.opener) {
+      window.opener.postMessage({message: "hello"}, window.location.origin);
+      window.close()
+    } else {
+      console.log("error")
+    }
   }
   return (
     <form onSubmit={handleSubmit}>

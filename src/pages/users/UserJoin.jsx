@@ -1,13 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../styles/userJoin.css"
 
 export default function UserJoin() {
     const [ act, setAct ] = useState(false);
+
+    useEffect(() => {
+        const handleMessage = (e) => {
+            if (e.origin !== window.location.origin) return;
+            e.data.message ? console.log(e.data.message) : console.log("")
+        };
+
+        window.addEventListener('message', handleMessage);
+
+        return () => {
+            window.removeEventListener('message', handleMessage);
+        };
+    }, [])
+
     const handleOpenPopUp = () => {
         if (!act) {
             setAct(true)
         }
-        window.open("/identify", "_blank", "width=500px, height=500px")
+        window.open("/identify", "_blank", "width=500px, height=500px, resizable=no")
     }
 
     return (
