@@ -21,6 +21,7 @@ import Event from "./pages/events/Events"
 import HookTest from "./tests/HookTest"
 import Identify from "./pages/subs/Identify"
 import Reservation from "./pages/reservation/Reservation"
+import UploadForm from "./pages/uploads/UploadForm"
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -74,6 +75,7 @@ export default function App() {
         <Route path="/local/*" element={<Local />} />
         {/* 객실 업로드 */}
         <Route path="/upload" element={<Upload />} />
+        <Route path="/upload-more" element={<UploadForm />} />
         {/* 이벤트 상세 */}
         <Route path="/event" element={<Event />} />
         {/* 예약하기 */}

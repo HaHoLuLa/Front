@@ -4,6 +4,18 @@
   justify-content: space-between;
 }
 
+.map-popup {
+  position: fixed;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  z-index: 100000;
+}
+
 .left-menu {
   width: 24%; 
   display: flex; 

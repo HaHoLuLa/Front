@@ -1,17 +1,57 @@
 import { useParams } from "react-router-dom"
 import "../../styles/sub1.css"
+import { useEffect, useState } from "react"
+
+const MapPopup = ({act, setAct}) => {
+
+
+  let inStyles = {
+    width: "95vw",
+    height:  "90vh",
+    position: "relative",
+    backgroundColor: "white",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)"
+  }
+
+  useEffect(() => {
+    if (act) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "auto"
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"
+    }
+  }, [act])
+
+  const handleClose = () => {
+    setAct(false)
+  }
+
+  return (
+    <div className="map-popup" style={act ? {display: "flex"} : {display: "none"}}>
+      <div style={inStyles} onClick={handleClose}>test</div>
+    </div>
+  )
+}
 
 export const Sub1 = () => {
   const { locate } = useParams()
+  const [ act, setAct ] = useState(false);
 
   return (
+    <>
+    <MapPopup act={act} setAct={setAct} />
     <main>
     <h2>'{locate}' 검색 결과</h2>
     <div className="main">
 
       <div className="left-menu">
 
-        <div className="map-menu">
+        <div className="map-menu" onClick={() => setAct(true)}>
           <i className="fa-solid fa-location-dot fa-2xl"></i>
           <span><b>지도에서 숙소보기</b></span>
         </div>
@@ -72,5 +112,6 @@ export const Sub1 = () => {
       </div>
     </div>
   </main>
+        </>
   )
 }
