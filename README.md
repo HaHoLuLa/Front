@@ -32,6 +32,7 @@ export default function App() {
         <Route path="/local/*" element={<Local />} />
         {/* 객실 업로드 */}
         <Route path="/upload" element={<Upload />} />
+        <Route path="/upload-more" element={<UploadForm />} />
         {/* 이벤트 상세 */}
         <Route path="/event" element={<Event />} />
         {/* 예약하기 */}
