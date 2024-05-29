@@ -63,3 +63,10 @@ export default function App() {
 - react-helmet-async
 - react-router-dom
 - swiper
+
+---
+
+### 설치 명령어
+```bash
+npm i @react-google-maps/api @stomp/stompjs axios quill react-quill react-helmet-async react-router-dom swiper
+```
