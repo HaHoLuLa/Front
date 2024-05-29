@@ -1,20 +1,9 @@
 import { useParams } from "react-router-dom"
 import "../../styles/sub1.css"
 import { useEffect, useState } from "react"
+import { GoogleMap, LoadScript, MarkerF, InfoWindowF } from "@react-google-maps/api"
 
 const MapPopup = ({act, setAct}) => {
-
-
-  let inStyles = {
-    width: "95vw",
-    height:  "90vh",
-    position: "relative",
-    backgroundColor: "white",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)"
-  }
-
   useEffect(() => {
     if (act) {
       document.body.style.overflow = "hidden"
@@ -32,8 +21,18 @@ const MapPopup = ({act, setAct}) => {
   }
 
   return (
-    <div className="map-popup" style={act ? {display: "flex"} : {display: "none"}}>
-      <div style={inStyles} onClick={handleClose}>test</div>
+    <div className="map-popup" style={act ? {display: "block"} : {display: "none"}}>
+      <div>
+        <div style={{display: "flex", justifyContent: "flex-end"}}><button style={{fontSize: "30px", backgroundColor: "transparent", border: "none"}} onClick={handleClose}>&times;</button></div>
+        <div style={{display: "flex"}}>
+          <div style={{width: "30%", backgroundColor: "aqua"}}>왜</div>
+          <div style={{flex: "1"}}>
+          <LoadScript googleMapsApiKey={`${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}>
+            <GoogleMap mapContainerStyle={{width: "100%", height: "80vh"}} center={{lat: 37, lng: 127}} zoom={15} options={{ disableDefaultUI: false }}/>
+          </LoadScript>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

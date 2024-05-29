@@ -42,7 +42,7 @@ export default function Header() {
                         })}>여간행장</h1>
               </Link>
             </div>
-            { pathname !== "/upload" ?
+            { pathname !== "/upload" && pathname !== "/upload-more" ?
             <SearchBar /> : <span style={{marginLeft: "10px"}}>현지인</span>
              }
           </div>

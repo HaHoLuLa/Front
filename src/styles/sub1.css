@@ -16,6 +16,16 @@
   z-index: 100000;
 }
 
+.map-popup > div {
+  width: 80vw;
+  height: 90vh;
+  position: relative;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .left-menu {
   width: 24%; 
   display: flex; 
