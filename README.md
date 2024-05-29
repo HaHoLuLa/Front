@@ -66,7 +66,7 @@ export default function App() {
 
 ---
 
-### 설치 명령어
+### 패키지 설치 명령어
 ```bash
 npm i @react-google-maps/api @stomp/stompjs axios quill react-quill react-helmet-async react-router-dom swiper
 ```
