@@ -19,6 +19,7 @@ export default function App() {
         <Route path="/citys" element={<CityList />} />
         {/* 검색 결과 */}
         <Route path="/search/:locate" element={<Sub1 />} />
+        <Route path="/search/nation" element={<SearchNation />} />
         {/* 객실 페이지 */}
         <Route path="/room" element={<Sub3 />}>
           <Route path=":num" element={<Sub3 />} />
