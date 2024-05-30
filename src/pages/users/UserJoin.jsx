@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import "../../styles/userJoin.css"
 
 export default function UserJoin() {
-    const [ act, setAct ] = useState(false);
+    const [popup, setPopup] = useState(null);
 
     useEffect(() => {
         const handleMessage = (e) => {
-            if (e.origin !== window.location.origin) return;
-            e.data.message ? console.log(e.data.message) : console.log("")
+            if (e.origin !== window.location.origin) 
+                return;
+            e.data.message && console.log(e.data.message);
         };
 
         window.addEventListener('message', handleMessage);
@@ -17,12 +18,44 @@ export default function UserJoin() {
         };
     }, [])
 
-    const handleOpenPopUp = () => {
-        if (!act) {
-            setAct(true)
+    // const handleOpenPopUp = () => {
+    //     if (!act) {
+    //         setAct(true)
+    //         window.open("/identify", "_blank", "width=500px, height=500px, resizable=no")
+    //     }
+    // }
+
+
+    const openPopup = () => {
+      // 이미 팝업이 열려있는지 확인
+      if (popup && !popup.closed) {
+        popup.focus(); // 팝업 창을 포커스
+        return;
+      }
+
+      // 팝업 창 열기
+      const newPopup = window.open(
+        '/identify', // 여기에 팝업 창 URL 입력
+        'popupWindow',
+        'width=500,height=500'
+      );
+
+      // 팝업 창 참조 저장
+      setPopup(newPopup);
+    };
+
+    useEffect(() => {
+      // 팝업 창이 닫힐 때 참조를 null로 설정
+      const checkPopupClosed = () => {
+        if (popup && popup.closed) {
+          setPopup(null);
         }
-        window.open("/identify", "_blank", "width=500px, height=500px, resizable=no")
-    }
+      };
+
+      const interval = setInterval(checkPopupClosed, 1000);
+
+      return () => clearInterval(interval);
+    }, [popup]);
 
     return (
         <main>
@@ -31,7 +64,7 @@ export default function UserJoin() {
 
                 <h2>본인 인증</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <button className="user-check-btn" onClick={handleOpenPopUp}>본인 인증 확인</button>
+                    <button className="user-check-btn" onClick={openPopup}>본인 인증 확인</button>
                 </div>
                 
                 <h2>이름</h2>

@@ -2,10 +2,20 @@ import { useParams } from "react-router-dom"
 import "../../styles/sub1.css"
 import { useEffect, useState } from "react"
 import { GoogleMap, LoadScript, 
-  // MarkerF, InfoWindowF
+  MarkerF, InfoWindowF
  } from "@react-google-maps/api"
 
 const MapPopup = ({act, setAct}) => {
+  const [selectedMarker, setSelectedMarker] = useState(null);
+
+  const handleSetMarker = (marker) => {
+    setSelectedMarker(marker);
+  };
+
+  const handleInfoWindowClose = () => {
+    setSelectedMarker(null);
+  };
+
   useEffect(() => {
     if (act) {
       document.body.style.overflow = "hidden"
@@ -30,7 +40,49 @@ const MapPopup = ({act, setAct}) => {
           <div style={{width: "30%", backgroundColor: "aqua"}}>왜</div>
           <div style={{flex: "1"}}>
           <LoadScript googleMapsApiKey={`${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}>
-            <GoogleMap mapContainerStyle={{width: "100%", height: "80vh"}} center={{lat: 37, lng: 127}} zoom={15} options={{ disableDefaultUI: false }}/>
+            <GoogleMap mapContainerStyle={{width: "100%", height: "80vh"}} center={{lat: 37, lng: 127}} zoom={15} options={{ disableDefaultUI: false }}>
+            {[
+            {
+              name: "₩ 100,000",
+              position: {
+                lat: 37,
+                lng: 127,
+              },
+            },
+            { name: "₩ 200,000", position: { lat: 38, lng: 128 } },
+            { name: "₩ 300,000", position: { lat: 37, lng: 128 } },
+            { name: "₩ 400,000", position: { lat: 38, lng: 127 } },
+            {
+              name: "고덕 아남아파트",
+              position: { lat: 37.5578508, lng: 127.1459139 },
+            },
+          ].map((item, index) => (
+            <MarkerF
+              key={index}
+              position={item.position}
+              title={item.name}
+              label={{
+                color: "white",
+                text: item.name,
+              }}
+              onClick={() => handleSetMarker(item)}
+            />
+          ))}
+          {selectedMarker && (
+            <InfoWindowF
+              position={selectedMarker.position}
+              onCloseClick={handleInfoWindowClose}
+              options={{
+                pixelOffset: new window.google.maps.Size(0, -30),
+              }}
+            >
+              <div>
+                <h1 style={{ margin: "0" }}>특가</h1>
+                {selectedMarker.name}
+              </div>
+            </InfoWindowF>
+          )}
+            </GoogleMap>
           </LoadScript>
           </div>
         </div>

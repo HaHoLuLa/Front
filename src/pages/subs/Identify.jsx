@@ -19,8 +19,9 @@ export default function Identify() {
   }
   return (
     <form onSubmit={handleSubmit}>
-      <input />
-      <input />
+      <input placeholder="생일" />
+      <input placeholder="전화" />
+      <input placeholder="성별" />
       <button>인증하기</button>
     </form>
   )
