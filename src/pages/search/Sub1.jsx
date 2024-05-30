@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom"
 import "../../styles/sub1.css"
 import { useEffect, useState } from "react"
-import { GoogleMap, LoadScript, MarkerF, InfoWindowF } from "@react-google-maps/api"
+import { GoogleMap, LoadScript, 
+  // MarkerF, InfoWindowF
+ } from "@react-google-maps/api"
 
 const MapPopup = ({act, setAct}) => {
   useEffect(() => {

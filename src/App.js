@@ -13,7 +13,7 @@ import NativeJoin1 from "./pages/users/NativeJoin1"
 import NativeJoin from "./pages/users/NativeJoin"
 import UserJoin from "./pages/users/UserJoin"
 import Local from "./pages/users/Local"
-import { Sub1 } from "./pages/subs/Sub1"
+import { Sub1 } from "./pages/search/Sub1"
 import { Sub3 } from "./pages/subs/Sub3"
 import { Upload } from "./pages/uploads/Upload"
 import { useEffect } from "react"
@@ -22,6 +22,7 @@ import HookTest from "./tests/HookTest"
 import Identify from "./pages/subs/Identify"
 import Reservation from "./pages/reservation/Reservation"
 import UploadForm from "./pages/uploads/UploadForm"
+import { SearchNation } from "./pages/search/SearchNation"
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -62,6 +63,7 @@ export default function App() {
         <Route path="/citys" element={<CityList />} />
         {/* 검색 결과 */}
         <Route path="/search/:locate" element={<Sub1 />} />
+        <Route path="/search/nation" element={<SearchNation />} />
         {/* 객실 페이지 */}
         <Route path="/room" element={<Sub3 />}>
           <Route path=":num" element={<Sub3 />} />
