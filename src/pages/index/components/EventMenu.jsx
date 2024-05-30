@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom"
 import { Navigation } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 
-export default function EventMenu({title, data}) {
+export default function EventMenu({title, data, sub}) {
+  const nav = useNavigate();
   return (
     <div className="event-menu">
       <div className="event-text">
@@ -22,21 +24,21 @@ export default function EventMenu({title, data}) {
           spaceBetween={30}
         >
 
-        {data.map((item, index) => (
-          <SwiperSlide key={index}>
+        {data.map((i, index) => (
+          <SwiperSlide key={index} onClick={() => nav(`/room/${i.hNum}`)}>
 
           <div className="event-object">
             <div style={{backgroundImage: "url('https://img.freepik.com/free-photo/forest-landscape_71767-127.jpg')"}}></div>
             <div>
 
               <div>
-                <span>티켓/패스</span>
-                <h4>[특가] 이주현의 집 아남아파트!</h4>
+                <span>{sub}</span>
+                <h4>{i.hName}</h4>
               </div>
 
               <div>
                 <span><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-regular fa-star"></i> 341</span>
-                <span>가격 500,000원 / 1인</span>
+                <span>가격 {i.rCost !== undefined ? i.rCost.toLocaleString() : ""}원 / {i.rPeople}인</span>
               </div>
             </div>
           </div>

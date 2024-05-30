@@ -12,6 +12,8 @@ export default function Index() {
   // const data0 = data.filter((i) => i.hType === 0)
   const data1 = data.filter((i) => i.hType === 1);
   const data2 = data.filter((i) => i.hType === 2);
+  const data14 = data1.slice(0, 4);
+  const data24 = data2.slice(0, 4);
   const realData = useGetData("/main/get-hotel?type=2");
   // const data3 = data.filter((i) => i.hType === 3)
   console.log(realData);
@@ -20,9 +22,9 @@ export default function Index() {
     <main>
       <ImageMenu />
     
-      <EventMenu title={"TYPE1"} data={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />    
+      <EventMenu title={"TYPE1"} sub={"type1"} data={data} />    
     
-      <EventCart menu1={"TYPE2"} menu2={"TYPE3"} item1={[1, 2, 3, 4]} item2={[5, 6, 7, "ㅁㄴㄹ"]} />
+      <EventCart menu1={"TYPE2"} menu2={"TYPE3"} item1={data14} item2={data24} title1={"하하호호"} title2={"룰루랄라"} sub1={"type2"} sub2={"type3"} />
     
       <Ad images={['/img/ad1.png', '/img/ad2.png']} />
     

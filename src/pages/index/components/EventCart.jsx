@@ -1,7 +1,9 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 
-export default function EventCart({menu1, menu2, item1, item2}) {
+export default function EventCart({menu1, menu2, item1, item2, title1, title2, sub1, sub2}) {
   const [ act, setAct ] = useState(true);
+  const nav = useNavigate();
 
   const activeStyle = {
     width: "50%",
@@ -39,18 +41,18 @@ export default function EventCart({menu1, menu2, item1, item2}) {
 
       { act ? item1.map((item, index) => (
 
-        <div className="cart-object" key={index}>
+        <div className="cart-object" key={index} onClick={() => nav(`/room/${item.hNum}`)}>
         <div style={{backgroundImage: "url('https://img.freepik.com/free-photo/forest-landscape_71767-127.jpg')"}}>
-          <div>{item}</div>
-          <div><span>⭐황금연휴 좌석보유⭐</span></div>
+          <div>{title1}</div>
+          <div><span>{sub1}</span></div>
         </div>
 
         <div>
           <div>
-            <span>아남아파트 5, 6일</span>
-            <div><span>#우리집</span>&nbsp;<span>#집이_최고지</span></div>
+            <span>{item.hName}</span>
+            {/* <div><span>#우리집</span>&nbsp;<span>#집이_최고지</span></div> */}
           </div>
-          <div><h3>500,000원~</h3></div>
+          <div><h3>{item.rCost !== undefined ? item.rCost.toLocaleString() : ""}원~</h3></div>
         </div>
       </div>
 
@@ -58,16 +60,16 @@ export default function EventCart({menu1, menu2, item1, item2}) {
 
   <div className="cart-object" key={index}>
   <div style={{backgroundImage: "url('https://img.freepik.com/free-photo/forest-landscape_71767-127.jpg')"}}>
-    <div>{item}</div>
-    <div><span>⭐황금연휴 좌석보유⭐</span></div>
+    <div>{title2}</div>
+    <div><span>{sub2}</span></div>
   </div>
 
   <div>
     <div>
-      <span>아남아파트 5, 6일</span>
-      <div><span>#우리집</span>&nbsp;<span>#집이_최고지</span></div>
+      <span>{item.hName}</span>
+      {/* <div><span>#우리집</span>&nbsp;<span>#집이_최고지</span></div> */}
     </div>
-    <div><h3>500,000원~</h3></div>
+    <div><h3>{item.rCost !== undefined ? item.rCost.toLocaleString() : ""}원~</h3></div>
   </div>
 </div>
 

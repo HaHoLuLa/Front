@@ -29,7 +29,7 @@ const ResInfoModal3 = ({act3, setAct3}) => {
           <h1 className="modalName">개인정보 국외 이전 동의 (필수)</h1>
           <hr style={{color:"black"}}/>
           <div className="img-div">
-            <img className="modalInImg" src="https://media.discordapp.net/attachments/1232689740793253968/1243448771921317928/image.png?ex=66518369&is=665031e9&hm=5be4b8ae4f617237d4cb38782830596dfbf2bfa057e9e5094cfede33aa52e197&=&format=webp&quality=lossless&width=1798&height=842" alt=""/>
+            <img className="modalInImg" src={`${process.env.PUBLIC_URL}/img/table.png`} alt=""/>
           </div>
         </div>
       </div>

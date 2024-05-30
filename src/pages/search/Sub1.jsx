@@ -35,12 +35,15 @@ const MapPopup = ({act, setAct}) => {
   return (
     <div className="map-popup" style={act ? {display: "block"} : {display: "none"}}>
       <div>
-        <div style={{display: "flex", justifyContent: "flex-end"}}><button style={{fontSize: "30px", backgroundColor: "transparent", border: "none"}} onClick={handleClose}>&times;</button></div>
+        <div style={{display: "flex", justifyContent: "flex-end"}}><button style={{fontSize: "30px", backgroundColor: "transparent", border: "none", height: "30.75px", lineHeight: "30.75px"}} onClick={handleClose}>&times;</button></div>
         <div style={{display: "flex"}}>
-          <div style={{width: "30%", backgroundColor: "aqua"}}>왜</div>
-          <div style={{flex: "1"}}>
+          <div style={{width: "30%", paddingLeft: "30px"}}>
+            <h2 style={{marginTop: "0"}}>예약 가능 숙소 123개</h2>
+            
+          </div>
+          <div style={{flex: "1", paddingRight: "30px"}}>
           <LoadScript googleMapsApiKey={`${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}>
-            <GoogleMap mapContainerStyle={{width: "100%", height: "80vh"}} center={{lat: 37, lng: 127}} zoom={15} options={{ disableDefaultUI: false }}>
+            <GoogleMap mapContainerStyle={{width: "100%", height: "83vh"}} center={{lat: 37, lng: 127}} zoom={15} options={{ disableDefaultUI: false }}>
             {[
             {
               name: "₩ 100,000",

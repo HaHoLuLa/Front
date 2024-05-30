@@ -17,6 +17,7 @@
 }
 
 .map-popup > div {
+  border-radius: 10px;
   width: 80vw;
   height: 90vh;
   position: relative;
