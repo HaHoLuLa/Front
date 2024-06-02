@@ -2,6 +2,7 @@ import { useState } from "react"
 import "../../styles/login.css"
 import LoginUtil from "../../utils/LoginUtil"
 import PopUp from "./PopUp"
+import GoogleLoginTest from "../../tests/GoogleLogin"
 
 export default function Login() {
   const [ act, setAct ] = useState(false);
@@ -18,7 +19,7 @@ export default function Login() {
             <b>N</b>
           </div>
           <div className="google">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="40" height="40" rx="20" fill="#F2F2F2" />
               <g clipPath="url(#clip0_710_6221)">
                 <path d="M29.6 20.2273C29.6 19.5182 29.5364 18.8364 29.4182 18.1818H20V22.05H25.3818C25.15 23.3 24.4455 24.3591 23.3864 25.0682V27.5773H26.6182C28.5091 25.8364 29.6 23.2727 29.6 20.2273Z" fill="#4285F4" />
@@ -31,7 +32,8 @@ export default function Login() {
                   <rect width="20" height="20" fill="white" transform="translate(10 10)" />
                 </clipPath>
               </defs>
-            </svg>
+            </svg> */}
+            <GoogleLoginTest />
           </div>
 
           <div className="kakao">

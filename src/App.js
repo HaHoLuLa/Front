@@ -24,6 +24,7 @@ import Reservation from "./pages/reservation/Reservation"
 import UploadForm from "./pages/uploads/UploadForm"
 import { SearchNation } from "./pages/search/SearchNation"
 import UserPage from "./pages/users/UserPage"
+import GoogleLoginTest from "./tests/GoogleLogin"
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -90,6 +91,7 @@ export default function App() {
       <Route path="/test/swiper" element={<SwiperTest /> } />
       <Route path="/test/hook" element={<HookTest />} />
       <Route path="/test/chat/:sender/:id" element={<Chat />} />
+      <Route path="/test/google" element={<GoogleLoginTest />} />
       {/* 본인인증 */}
       <Route path="/identify" element={<Identify />} />
       {/* 404시 메인으로 */}

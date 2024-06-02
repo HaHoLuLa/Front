@@ -26,7 +26,7 @@ export default function Identify() {
       alert("정상 인증되었습니다.");
     }
     if (window.opener) {
-      window.opener.postMessage({ message: "hello" }, window.location.origin);
+      window.opener.postMessage({ birth: birth, gender: gender, phone: phone }, window.location.origin);
       window.close();
     } else {
       console.log("error");
@@ -35,8 +35,8 @@ export default function Identify() {
 
   return (
     <form className="id-form" onSubmit={handleSubmit}>
-      <h1 className="idenfify-title">여간행장 본인인증</h1>
-      {/* <hr style={{border: "none", borderTop: "1px solid #ccc"}}/> */}
+      <h1 className="idenfify-title">본인인증</h1>
+      {/* <hr style={{margin: "0", width: "95%"}} /> */}
       <label className="input label-birth">
         <p>생일을 선택해주세요</p>
         <input

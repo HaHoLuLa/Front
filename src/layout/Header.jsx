@@ -63,7 +63,7 @@ export default function Header() {
         <div className="header-nav">
           <span><i className="fa-solid fa-plane-departure"></i>&nbsp; 메뉴1</span>
           <span onClick={() => nav("/citys")}><i className="fa-solid fa-hotel"></i>&nbsp;도시들</span>
-          <span><i className="fa-solid fa-comments"></i>&nbsp;채팅</span>
+          <span><i className="fa-solid fa-comments"></i>&nbsp;현지인</span>
           <span onClick={() => nav("/event")}><i className="fa-solid fa-gift"></i>&nbsp;이벤트</span>
           {/* <span><i className="fa-solid fa-box"></i>&nbsp;메뉴 5</span> */}
           {/* <span>더보기&nbsp;<i className="fa-solid fa-caret-down"></i></span> */}

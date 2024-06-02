@@ -2,13 +2,28 @@ import { useEffect, useState } from "react";
 import "../../styles/userJoin.css"
 
 export default function UserJoin() {
-    const [popup, setPopup] = useState(null);
+    const [ popup, setPopup ] = useState(null);
+    // const [ birth, setBirth ] = useState("");
+    // const [ gender, setGender ] = useState("");
+    // const [ phone, setPhone ] = useState("");
+    const [ form, setForm ] = useState({
+        birth: "",
+        gender: "",
+        phone: "",
+        name: "",
+        email: "",
+        id: "",
+        pw: "",
+    });
+
 
     useEffect(() => {
         const handleMessage = (e) => {
             if (e.origin !== window.location.origin) 
                 return;
-            e.data.message && console.log(e.data.message);
+            e.data?.birth && setForm(prev => ({ ...prev, birth: e.data.birth }))
+            e.data?.gender && setForm(prev => ({ ...prev, gender: e.data.gender }))
+            e.data?.phone && setForm(prev => ({ ...prev, phone: e.data.phone }))
         };
 
         window.addEventListener('message', handleMessage);
@@ -57,9 +72,23 @@ export default function UserJoin() {
       return () => clearInterval(interval);
     }, [popup]);
 
+    useEffect(() => {
+        console.log(form)
+    }, [form])
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm(prevState => ({
+          ...prevState,
+          [name]: value,
+        }))
+    }
+
     return (
         <main>
             <div className="user-login-box" style={{ marginTop: "50px" }}>
+                <form>
+
                 <h1 style={{ marginBottom: "50px" }}>일반 회원가입</h1>
 
                 <h2>본인 인증</h2>
@@ -69,28 +98,28 @@ export default function UserJoin() {
                 
                 <h2>이름</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <input className="user-basic-bar" type="text" placeholder="이름을 입력하세요" />
+                    <input className="user-basic-bar" type="text" placeholder="이름을 입력하세요" name="name" onChange={handleChange} />
                 </div>
 
                 <h2>이메일</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <input className="user-basic-bar" type="text" />
+                    <input className="user-basic-bar" type="text" placeholder="이메일을 입력하세요" name="email" onChange={handleChange} />
                 </div>
 
                 <h2>아이디</h2>
                 <div style={{ display: "flex", justifyContent: "center", width: "364px", marginLeft: "68px" }}>
-                    <input className="user-id-bar" type="text" style={{ marginRight: "20px" }} />
+                    <input className="user-id-bar" type="text" style={{ marginRight: "20px" }} placeholder="아이디를 입력하세요" name="id" onChange={handleChange} />
                     <button className="user-check-btn" style={{ width: "80px" }}>중복 확인</button>
                 </div>
 
                 <h2>비밀번호</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <input className="user-basic-bar" type="password" />
+                    <input className="user-basic-bar" type="password" placeholder="비밀번호를 입력하세요" />
                 </div>
 
                 <h2>비밀번호 확인</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <input className="user-basic-bar" type="password" />
+                    <input className="user-basic-bar" type="password" placeholder="비밀번호를 다시 입력하세요" name="pw" onChange={handleChange} />
                 </div>
 
                 <h2>개인정보 수집 및 이용 동의서</h2>
@@ -126,6 +155,7 @@ export default function UserJoin() {
                 <div style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}>
                     <button className="user-check-btn">가입하기</button>
                 </div>
+                </form>
             </div>
         </main>
     );
