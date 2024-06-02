@@ -45,6 +45,7 @@ export default function App() {
       <Route path="/test/swiper" element={<SwiperTest /> } />
       <Route path="/test/hook" element={<HookTest />} />
       <Route path="/test/chat/:sender/:id" element={<Chat />} />
+      <Route path="/test/google" element={<GoogleLoginTest />} />
       {/* 본인인증 */}
       <Route path="/identify" element={<Identify />} />
       {/* 404시 메인으로 */}
@@ -58,6 +59,7 @@ export default function App() {
 ---
 ### 패키지 목록
 - @react-google-maps/api
+- @react-oauth/google
 - @stomp/stompjs
 - axios
 - quill
@@ -70,5 +72,5 @@ export default function App() {
 
 ### 패키지 설치 명령어
 ```bash
-npm i @react-google-maps/api @stomp/stompjs axios quill react-quill react-helmet-async react-router-dom swiper
+npm i @react-google-maps/api @stomp/stompjs axios quill react-quill react-helmet-async react-router-dom swiper @react-oauth/google
 ```
