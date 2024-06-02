@@ -14,7 +14,8 @@ export default function App() {
         {/* 로그인 */}
         <Route path="/login" element={<Login />} />
         {/* 마이페이지 */}
-        <Route path="/mypage" element={<UserInfo />} />
+        {/* <Route path="/mypage" element={<UserInfo />} /> */}
+        <Route path="/mypage" element={<UserPage />} />
         {/* 도시들 (아마 안 쓸 수도) */}
         <Route path="/citys" element={<CityList />} />
         {/* 검색 결과 */}
