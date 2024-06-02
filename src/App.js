@@ -7,7 +7,7 @@ import Map from "./tests/Map"
 import Index from "./pages/index/Index"
 import Chat from "./tests/Chat"
 import SwiperTest from "./tests/SwiperTest"
-import UserInfo from "./pages/users/UserInfo"
+// import UserInfo from "./pages/users/UserInfo"
 import CityList from "./pages/CityList"
 import NativeJoin1 from "./pages/users/NativeJoin1"
 import NativeJoin from "./pages/users/NativeJoin"
@@ -23,6 +23,7 @@ import Identify from "./pages/subs/Identify"
 import Reservation from "./pages/reservation/Reservation"
 import UploadForm from "./pages/uploads/UploadForm"
 import { SearchNation } from "./pages/search/SearchNation"
+import UserPage from "./pages/users/UserPage"
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -58,7 +59,8 @@ export default function App() {
         {/* 로그인 */}
         <Route path="/login" element={<Login />} />
         {/* 마이페이지 */}
-        <Route path="/mypage" element={<UserInfo />} />
+        {/* <Route path="/mypage" element={<UserInfo />} /> */}
+        <Route path="/mypage" element={<UserPage />} />
         {/* 도시들 (아마 안 쓸 수도) */}
         <Route path="/citys" element={<CityList />} />
         {/* 검색 결과 */}
