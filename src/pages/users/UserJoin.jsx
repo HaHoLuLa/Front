@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "../../styles/userJoin.css"
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 export default function UserJoin() {
     const [ popup, setPopup ] = useState(null);
@@ -15,6 +17,7 @@ export default function UserJoin() {
         id: "",
         pw: "",
     });
+    const nav = useNavigate();
 
 
     useEffect(() => {
@@ -84,16 +87,36 @@ export default function UserJoin() {
         }))
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault() 
+        if (["birth", "gender", "phone"].some(key => form[key] === "")) {
+            alert("본인인증을 해주세요")
+            return
+        } else if (Object.values(form).some(value => value === "")) {
+            alert("빈칸 없이 입력해주세요")
+            return
+        } else if (document.getElementById('pw1').value !== document.getElementById('pw2').value) {
+            alert("입력한 비밀번호가 달라요")
+            return
+        } else if (!document.getElementById('check').checked) {
+            alert("약관에 동의해주세요")
+            return
+        }
+        
+        // await axios.post('', form)
+        nav("/", {replace: true})
+    }
+
     return (
         <main>
             <div className="user-login-box" style={{ marginTop: "50px" }}>
-                <form>
+                <form onSubmit={handleSubmit}>
 
                 <h1 style={{ marginBottom: "50px" }}>일반 회원가입</h1>
 
                 <h2>본인 인증</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <button className="user-check-btn" onClick={openPopup}>본인 인증 확인</button>
+                    <input type="button" className="user-check-btn" onClick={openPopup} value={"본인 인증 확인"} />
                 </div>
                 
                 <h2>이름</h2>
@@ -114,12 +137,12 @@ export default function UserJoin() {
 
                 <h2>비밀번호</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <input className="user-basic-bar" type="password" placeholder="비밀번호를 입력하세요" />
+                    <input className="user-basic-bar" id="pw1" type="password" placeholder="비밀번호를 입력하세요" />
                 </div>
 
                 <h2>비밀번호 확인</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <input className="user-basic-bar" type="password" placeholder="비밀번호를 다시 입력하세요" name="pw" onChange={handleChange} />
+                    <input className="user-basic-bar" id="pw2" type="password" placeholder="비밀번호를 다시 입력하세요" name="pw" onChange={handleChange} />
                 </div>
 
                 <h2>개인정보 수집 및 이용 동의서</h2>
@@ -150,7 +173,7 @@ export default function UserJoin() {
 
                         ※ 귀하는 이에 대한 동의를 거부할 수 있으며, 다만, 동의가 없을 경우 위촉 전형 진행이 불가능할 수 있음을 알려드립니다. </p>
                 </div>
-                <p style={{ marginTop: "25px", textAlign: "center" }}>개인정보 수집 ∙ 이용에 대한 동의에 동의하십니까? <input type="checkbox" name="user-join-ok" value="yyy" /></p>
+                <p style={{ marginTop: "25px", textAlign: "center" }}>개인정보 수집 ∙ 이용에 대한 동의에 동의하십니까? <input type="checkbox" id="check" name="user-join-ok" value="yyy" /></p>
 
                 <div style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}>
                     <button className="user-check-btn">가입하기</button>

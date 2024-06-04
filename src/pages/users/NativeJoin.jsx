@@ -14,18 +14,18 @@ export default function NativeJoin() {
 
                 <h2>아이디</h2>
                 <div style={{ display: "flex", justifyContent: "center", width: "364px", marginLeft: "68px" }}>
-                    <input className="native-id-bar" type="text" style={{ marginRight: "20px" }} />
+                    <input className="native-id-bar" type="text" style={{ marginRight: "20px" }} placeholder="아이디를 입력하세요" />
                     <button className="native-check-btn" style={{ width: "80px" }}>중복 확인</button>
                 </div>
 
                 <h2>비밀번호</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <input className="native-basic-bar" type="password" />
+                    <input className="native-basic-bar" type="password" placeholder="비밀번호를 입력하세요" />
                 </div>
 
                 <h2>비밀번호 확인</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <input className="native-basic-bar" type="password" />
+                    <input className="native-basic-bar" type="password" placeholder="비밀번호를 다시 입력하세요" />
                 </div>
 
                 <h2>개인정보 수집 및 이용 동의서</h2>

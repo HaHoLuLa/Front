@@ -1,4 +1,6 @@
 import "../../styles/uploadForm.css"
+import ReactQuill, { Quill } from 'react-quill';
+import "react-quill/dist/quill.snow.css";
 
 function UploadForm() {
     return (
@@ -60,10 +62,8 @@ function UploadForm() {
                     </div>
                 </div>
 
-                <div className="FormBodyContainer">
-                    textbox
-                    수정해야됨
-                </div>
+                {/* className="FormBodyContainer" */}
+                <ReactQuill />
 
                 <button className="FormGoButton">등록하기</button>
             </div>

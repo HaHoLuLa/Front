@@ -109,11 +109,11 @@
                 margin-top: 20px;
             }
 
-            .UserAccountTop > table, tr, td {
+            .UserAccountTop > table {
                 font-size: 18px;
             }
 
-            .UserAccountTop > tr, td {
+            .UserAccountTop > tr, .UAThead, .UATbody {
                 padding: 30px;
             }
 

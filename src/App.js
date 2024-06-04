@@ -7,7 +7,7 @@ import Map from "./tests/Map"
 import Index from "./pages/index/Index"
 import Chat from "./tests/Chat"
 import SwiperTest from "./tests/SwiperTest"
-// import UserInfo from "./pages/users/UserInfo"
+// import UserInfo from "./pages/userpages/UserInfo"
 import CityList from "./pages/CityList"
 import NativeJoin1 from "./pages/users/NativeJoin1"
 import NativeJoin from "./pages/users/NativeJoin"
@@ -23,8 +23,13 @@ import Identify from "./pages/subs/Identify"
 import Reservation from "./pages/reservation/Reservation"
 import UploadForm from "./pages/uploads/UploadForm"
 import { SearchNation } from "./pages/search/SearchNation"
-import UserPage from "./pages/users/UserPage"
+import UserPage from './pages/userpages/UserPage'
 import GoogleLoginTest from "./tests/GoogleLogin"
+import { Test } from "./tests/GoogleLoginTest2"
+import WriteReview from "./pages/subs/WriteReview"
+import ImageUpload from "./tests/ImageUpload"
+import UserPageBuyBox from './pages/userpages/UserPageBuyBox'
+import UserPageWish from './pages/userpages/UserPageWish'
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -61,7 +66,11 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         {/* 마이페이지 */}
         {/* <Route path="/mypage" element={<UserInfo />} /> */}
-        <Route path="/mypage" element={<UserPage />} />
+        <Route path="/mypage">
+          <Route path=":num" element={<UserPage />} />
+          <Route path=":num/wish" element={<UserPageWish />} />
+          <Route path=":num/buy" element={<UserPageBuyBox />} />
+        </Route>
         {/* 도시들 (아마 안 쓸 수도) */}
         <Route path="/citys" element={<CityList />} />
         {/* 검색 결과 */}
@@ -92,8 +101,12 @@ export default function App() {
       <Route path="/test/hook" element={<HookTest />} />
       <Route path="/test/chat/:sender/:id" element={<Chat />} />
       <Route path="/test/google" element={<GoogleLoginTest />} />
+      <Route path="/test/google2" element={<Test />} />
+      <Route path="/test/image" element={<ImageUpload />} />
       {/* 본인인증 */}
       <Route path="/identify" element={<Identify />} />
+      {/* 리뷰 */}
+      <Route path="/review" element={<WriteReview />} />
       {/* 404시 메인으로 */}
       <Route path="*" element={<Redirect />} />
     </Routes>

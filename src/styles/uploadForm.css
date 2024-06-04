@@ -1,3 +1,11 @@
+.ql-editor {
+    height: 600px !important;
+}
+
+.quill {
+    margin-bottom: 10px;
+}
+
 p {
     margin: 0;
 }
@@ -160,9 +168,9 @@ p {
 
     margin-bottom: 10px;
 
-    background-color: #fff;
+    /* background-color: #fff;
     border: solid 1px #ccc;
-    border-radius: 5px;
+    border-radius: 5px; */
 }
 
 .FormGoButton{

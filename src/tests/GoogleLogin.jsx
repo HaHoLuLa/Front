@@ -1,9 +1,11 @@
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function GoogleLoginTest() {
   const [user, setUser] = useState(null);
+  const nav = useNavigate();
 
   const handleLoginSuccess = async (response) => {
     console.log('로그인 성공 :', response);
@@ -17,9 +19,21 @@ export default function GoogleLoginTest() {
       const userInfo = res.data;
       setUser(userInfo);
       console.log('사용자 정보 :', userInfo);
+      nav("/")
     } catch (error) {
       console.error('로그인 실패 :', error);
     }
+
+    // try {
+    //   const userInfo = await axios.get(`https://people.googleapis.com/v1/people/me?personFields=genders,phoneNumbers&key=${process.env.REACT_APP_GOOGLE_PEOPLE_API_KEY}`, {
+    //     headers: {
+    //       Authorization: `Bearer ${response.credential}`
+    //     }
+    //   });
+    //   console.log('Additional user info:', userInfo.data);
+    // } catch (error) {
+    //   console.error('Error fetching additional user info:', error);
+    // }
   };
 
   // const handleLogin = useGoogleLogin({
@@ -52,7 +66,7 @@ export default function GoogleLoginTest() {
         <GoogleLogin
           onSuccess={handleLoginSuccess}
           onError={handleLoginFailure}
-          // useOneTap
+          useOneTap
           shape="circle"
           type="icon"
           // auto_select
