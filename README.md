@@ -15,7 +15,11 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         {/* 마이페이지 */}
         {/* <Route path="/mypage" element={<UserInfo />} /> */}
-        <Route path="/mypage" element={<UserPage />} />
+        <Route path="/mypage">
+          <Route path=":num" element={<UserPage />} />
+          <Route path=":num/wish" element={<UserPageWish />} />
+          <Route path=":num/buy" element={<UserPageBuyBox />} />
+        </Route>
         {/* 도시들 (아마 안 쓸 수도) */}
         <Route path="/citys" element={<CityList />} />
         {/* 검색 결과 */}
@@ -46,8 +50,12 @@ export default function App() {
       <Route path="/test/hook" element={<HookTest />} />
       <Route path="/test/chat/:sender/:id" element={<Chat />} />
       <Route path="/test/google" element={<GoogleLoginTest />} />
+      <Route path="/test/google2" element={<Test />} />
+      <Route path="/test/image" element={<ImageUpload />} />
       {/* 본인인증 */}
       <Route path="/identify" element={<Identify />} />
+      {/* 리뷰 */}
+      <Route path="/review" element={<WriteReview />} />
       {/* 404시 메인으로 */}
       <Route path="*" element={<Redirect />} />
     </Routes>
