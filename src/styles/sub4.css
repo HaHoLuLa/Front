@@ -5,7 +5,7 @@
   align-items: flex-start; 
   justify-content: center; 
   flex-direction: column; 
-  background-image: url('https://cdn.newspenguin.com/news/photo/202203/11014_32807_1237.png'); 
+  
   background-size: cover; 
   background-blend-mode: darken;
   background-color: rgb(0, 0, 0, 0.3);

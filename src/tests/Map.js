@@ -47,6 +47,7 @@ function Map() {
 
   return (
     <main>
+      <input onKeyDown={(e) => e.key === "Enter" && console.log(e.target.value)} />
       <LoadScript
         googleMapsApiKey={`${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}
       >

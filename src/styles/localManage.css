@@ -96,7 +96,7 @@
 .hotel > div {
    width : 100%;
    height:150px;
-   background-image: url('https://a.cdn-hotels.com/gdcs/production154/d970/090ffdbd-5b9c-4913-8bae-fe473cc7d4c9.jpg'); 
+   
    background-size: cover;
 }
 .hotel > h4 {

@@ -30,6 +30,9 @@ import WriteReview from "./pages/subs/WriteReview"
 import ImageUpload from "./tests/ImageUpload"
 import UserPageBuyBox from './pages/userpages/UserPageBuyBox'
 import UserPageWish from './pages/userpages/UserPageWish'
+import { 카운터 as Counter } from './tests/카운터'
+import { 지도 } from './tests/지도'
+import { 타이머 } from './tests/타이머'
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -47,9 +50,9 @@ const ScrollToTop = () => {
 const Redirect = () => {
   const nav = useNavigate()
   useEffect(() => {
-    nav('/', {replace: true})
+    setTimeout(() => nav('/', {replace: true}), 2000)
   }, [nav])
-  return null
+  return <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: "100vw", height: "100vh"}}><h1>잘못된 접근입니다.</h1></div>
 }
 
 export default function App() {
@@ -96,13 +99,18 @@ export default function App() {
         <Route path="/order" element={<Reservation />} />
       </Route>
       {/* /test 들은 테스트용 */}
-      <Route path="/test/map" element={<Map />} />
-      <Route path="/test/swiper" element={<SwiperTest /> } />
-      <Route path="/test/hook" element={<HookTest />} />
-      <Route path="/test/chat/:sender/:id" element={<Chat />} />
-      <Route path="/test/google" element={<GoogleLoginTest />} />
-      <Route path="/test/google2" element={<Test />} />
-      <Route path="/test/image" element={<ImageUpload />} />
+      <Route path="/test">
+        <Route path="map" element={<Map />} />
+        <Route path="swiper" element={<SwiperTest /> } />
+        <Route path="hook" element={<HookTest />} />
+        <Route path="chat/:sender/:id" element={<Chat />} />
+        <Route path="google" element={<GoogleLoginTest />} />
+        <Route path="google2" element={<Test />} />
+        <Route path="image" element={<ImageUpload />} />
+        <Route path="카운터" element={<Counter />} />
+        <Route path="지도" element={<지도 />} />
+        <Route path="타이머" element={<타이머 />} />
+      </Route>
       {/* 본인인증 */}
       <Route path="/identify" element={<Identify />} />
       {/* 리뷰 */}

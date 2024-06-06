@@ -103,7 +103,7 @@ export default function UserJoin() {
             return
         }
         
-        // await axios.post('', form)
+        await axios.post('/login/join', form).then(res => console.log(res.data)).catch(e => console.error(e))
         nav("/", {replace: true})
     }
 

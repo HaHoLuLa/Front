@@ -1,14 +1,24 @@
+import axios from "axios"
 import "../styles/sub4.css"
+import { useState, useEffect } from "react"
 
 function CityList() {
+  const [ data, setData ] = useState([])
+
+  useEffect(() => {
+    axios.get("/search/getCity-all")
+    .then(res => setData(res.data))
+    .catch(e => console.error(e))
+  }, [])
+  
   return (
   <main>
-    {[1,1,1,1].map((i, index) => (
-    <div className="city-menu" key={index}>
-      <h1>도시 이름</h1>
-      <span>도시 설명</span>
-      <button>숙소 보러가기 &gt;</button>
-    </div>
+    {data.map((item, index) => (
+      <div className="city-menu" key={index} style={{backgroundImage: `url('${item.pic}')`, marginBottom: '20px'}}>
+        <h1>{item.name}</h1>
+        <span>{item.info}</span>
+        <button>숙소 보러가기 &gt;</button>
+      </div>
     ))}
   </main>
   )

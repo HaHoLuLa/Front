@@ -20,7 +20,7 @@ export default function LoginUtil() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post(`${process.env.REACT_APP_URL}/login/login`,
+    await axios.post(`/login/login`,
     form, {
       withCredentials: true,
     })
@@ -33,10 +33,10 @@ export default function LoginUtil() {
 
   // console.log(data)
   useEffect(() => {
-    if (data.id) {
+    if (data) {
       nav("/")
     }
-  }, [data.id, nav])
+  }, [data, nav])
 
   return (
     <>

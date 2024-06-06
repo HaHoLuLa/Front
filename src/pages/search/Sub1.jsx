@@ -4,6 +4,8 @@ import { useEffect, useState } from "react"
 import { GoogleMap, LoadScript, 
   MarkerF, InfoWindowF
  } from "@react-google-maps/api"
+import axios from "axios"
+import { useGetData } from "../../utils/useData"
 
 const MapPopup = ({act, setAct}) => {
   const [selectedMarker, setSelectedMarker] = useState(null);
@@ -97,6 +99,17 @@ const MapPopup = ({act, setAct}) => {
 export const Sub1 = () => {
   const { locate } = useParams()
   const [ act, setAct ] = useState(false);
+  // const data = useGetData("/search/city-hotels?city=튀빙겐")
+  const [ data, setData ] = useState(null)
+
+  useEffect(() => {
+    axios.get(`/search/city-hotels?city=${locate}`)
+    .then(res => {
+      setData(res.data)
+      console.log(res.data)
+    })
+    .catch(e => console.error(e))
+  }, [])
 
   return (
     <>
@@ -135,36 +148,36 @@ export const Sub1 = () => {
 
           <h4>134건의 검색 결과</h4>
 
-          <div>
+          {/* <div>
             <select><option>예약가능 날짜</option></select>
             <select><option>가격대</option></select>
             <span>예약즉시 확정<input type="checkbox" /></span>
           </div>
           <label for="정렬">정렬 : </label>
-          <select name="정렬"><option>추천순</option></select>
+          <select name="정렬"><option>추천순</option></select> */}
         </div>
 
         <div className="result-container">
 
-        {[1,1,1,1,1,1,1,1,1,1,1,1].map((i) => (
+        {data?.map((item, index) => (
           
-          <div className="result-obj" key={i}>
-            <div style={{backgroundImage: "url('https://img.freepik.com/free-photo/forest-landscape_71767-127.jpg')"}}>
+          <div className="result-obj" key={index}>
+            <div style={{backgroundImage: `url('${item.hpUrl}')`}}>
               <div>
                 <i className="fa-regular fa-heart fa-xl"></i>
               </div>
             </div>
             <div>
-              <p><b>신라 호텔</b></p>
-              <p><i className="fa-solid fa-star"></i> 4.2 (142)</p>
-              <p><b>105,319</b>원</p>
+              <p><b>{item.hname}</b></p>
+              <p><i className="fa-solid fa-star"></i> {item.hrate} ({item?.rcount})</p>
+              <p><b></b>원</p>
             </div>
           </div>
         ))}
           
         </div>
 
-        <div className="result-page"><h3>&lt; 1 2 3 4 5 &gt;</h3></div>
+        {/* <div className="result-page"><h3>&lt; 1 2 3 4 5 &gt;</h3></div> */}
       </div>
     </div>
   </main>

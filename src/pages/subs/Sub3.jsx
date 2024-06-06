@@ -1,7 +1,31 @@
 import "../../styles/sub3.css"
 import Recommend from "../../components/Recommend"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import { useParams } from "react-router-dom"
 
 export const Sub3 = () => {
+  const [ data, setData ] = useState([])
+  const [ review, setReview ] = useState([])
+  const { num } = useParams() 
+  useEffect(() => {
+    axios.post(`${process.env.REACT_APP_URL}/detail/room?hNum=${num}`)
+    .then(res => {
+      setData(res.data)
+      console.log(res.data)
+    })
+    .catch(e => console.error(e))
+
+    axios.get(`/detail/hotel-review?hNum=${num}`)
+    .then(res => {
+      setReview(res.data)
+      console.log(res.data)
+    })
+    .catch(e => console.error(e))
+  }, [num])
+
+  
+
   return (
   <main>
     <div className="room-info">
@@ -37,7 +61,11 @@ export const Sub3 = () => {
 
         <div>
           <select>
-            <option value="1">1인실</option>
+            {
+              data?.map((item, index) => (
+              <option value={item.paNum} key={index}>{item.rname}</option>
+              ))
+            }
           </select>
           <button>예약하기</button>
         </div>
@@ -74,22 +102,16 @@ export const Sub3 = () => {
       <div>
         <h2>리뷰</h2>
         <div>
-          <div>
-            <p><span>하호룰라</span><span>2003.06.10 | 2024.04.11</span></p>
+          {
+            review.map((item, index) => (
+          <div key={index}>
+            <p><span>{item.name}</span><span>{item.resDate} | {item.reviewDate}</span></p>
             <p><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-regular fa-star"></i></p>
-            <p>엵긝 올즨뫈소애요. 빵에서 so cute 미키 마우스 서비스 i was 정말 놀라다. 한 뫄릥도 안늭곡 three really good</p>
-          </div>
-          <div>
-            <p><span>하호룰라</span><span>2003.06.10 | 2024.04.11</span></p>
-            <p><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-regular fa-star"></i></p>
-            <p>엵긝 올즨뫈소애요. 빵에서 so cute 미키 마우스 서비스 i was 정말 놀라다. 한 뫄릥도 안늭곡 three really good</p>
-          </div>
-          <div>
-            <p><span>하호룰라</span><span>2003.06.10 | 2024.04.11</span></p>
-            <p><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-regular fa-star"></i></p>
-            <p>엵긝 올즨뫈소애요. 빵에서 so cute 미키 마우스 서비스 i was 정말 놀라다. 한 뫄릥도 안늭곡 three really good</p>
+            <p>{item.content}</p>
           </div>
 
+            ))
+          }
         </div>
       </div>
     </div>

@@ -14,9 +14,9 @@ export default function Index() {
   const data2 = data.filter((i) => i.hType === 2);
   const data14 = data1.slice(0, 4);
   const data24 = data2.slice(0, 4);
-  const realData = useGetData("/main/get-hotel?type=2");
+  // const realData = useGetData("/main/get-hotel?type=2");
   // const data3 = data.filter((i) => i.hType === 3)
-  console.log(realData);
+  // console.log(realData);
   
   return (
     <main>

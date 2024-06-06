@@ -1,6 +1,15 @@
 import "../../styles/UserPage.css"
+import { useEffect, useState } from "react";
+import axios from "axios"
 
 function UserPage() {
+    const [ userInfo, setUserInfo ] = useState()
+    useEffect(() => {
+        axios.get("/my-page/user-info")
+        .then(res => setUserInfo(res.data))
+        .catch(e => console.error(e))
+    }, [])
+
     return (
         <main>
             <p class="UserPageName">마이페이지</p>
@@ -16,7 +25,7 @@ function UserPage() {
 
                     <div class="UserPageNev">
                         <a>계정</a>
-                        <a>결제내역</a>
+                        <a>예약내역</a>
                         <a>위시리스트</a>
                         <a>최근 본</a>
                     </div>
@@ -30,22 +39,22 @@ function UserPage() {
                         <table>
                             <tr>
                                 <td class="UAThead">이름</td>
-                                <td class="UATbody">곽 춘식</td>
+                                <td class="UATbody">{userInfo?.name}</td>
                             </tr>
 
                             <tr>
                                 <td class="UAThead">이메일</td>
-                                <td class="UATbody">I.Want.Go.Home@No.Home.kr</td>
+                                <td class="UATbody">{userInfo?.email}</td>
                             </tr>
 
                             <tr>
                                 <td class="UAThead">비밀번호</td>
-                                <td class="UATbody">이거 별표시</td>
+                                <td class="UATbody">비밀번호 재설정</td>
                             </tr>
 
                             <tr>
                                 <td class="UAThead">전화번호</td>
-                                <td class="UATbody">010-1577-1577</td>
+                                <td class="UATbody">{userInfo?.phone}</td>
                             </tr>
 
                             <tr>

@@ -13,7 +13,7 @@ const SearchBar = () => {
         <i className="fa-solid fa-magnifying-glass"></i>
         <input type="text" placeholder="여행 갈 도시를 찾아보세요!" className="search" onChange={(e) => setSearch(e.target.value)} onKeyDown={(e) => {
           if (e.key === "Enter" && search !== "") {
-            nav(`/search/${search}`)
+            nav(`/search/${encodeURIComponent(search)}`)
           }
         }} value={search} />
       </div>

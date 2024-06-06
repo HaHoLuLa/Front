@@ -16,7 +16,7 @@ function UserPageWish() {
 
                     <div class="UserPageNev">
                         <a>계정</a>
-                        <a>결제내역</a>
+                        <a>예약내역</a>
                         <a class="UserPageNow">위시리스트</a>
                         <a>최근 본</a>
                     </div>

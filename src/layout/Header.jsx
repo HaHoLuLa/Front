@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import PopUp from "../pages/users/PopUp";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const SearchBar = () => {
   const [ search, setSearch ] = useState("")
@@ -12,7 +13,7 @@ const SearchBar = () => {
       <i className="fa-solid fa-magnifying-glass"></i>
       <input className="search" type="text" name="" placeholder="도시를 검색하세요" onChange={(e) => setSearch(e.target.value)} onKeyDown={(e) => {
         if (e.key === "Enter" && search !== "") {
-          nav(`/search/${search}`)
+          nav(`/search/${encodeURIComponent(search)}`)
           // setSearch("")
         }
       }}/>
@@ -23,7 +24,29 @@ const SearchBar = () => {
 export default function Header() {
   const { pathname } = useLocation();
   const [ act, setAct ] = useState(false);
+  const [ user, setUser ] = useState(null);
   const nav = useNavigate();
+  useEffect(() => {
+    axios.post(`/login/session`, {
+      withCredentials: true,
+    })
+    .then(res => {
+      setUser(res.data)
+      console.log(res.data)
+    })
+    .catch(e => console.error(e))
+  }, [pathname])
+
+  const handleLogout = async () => {
+    const confirm = window.confirm("로그아웃 하시겠습니까?")
+    if (confirm) {
+      await axios.get(`/login/logout`)
+      .then(res => console.log(res.data))
+      .catch(e => console.error(e))
+      setUser(null)
+      nav("/")
+    }
+  }
 
   return (
     <>
@@ -42,7 +65,7 @@ export default function Header() {
                         })}>여간행장</h1>
               </Link>
             </div>
-            { pathname !== "/upload" && pathname !== "/upload-more" ?
+            { pathname !== "/upload" && pathname !== "/upload-more" && user?.native !== '1' ?
             <SearchBar /> : <span style={{marginLeft: "10px"}}>현지인</span>
              }
           </div>
@@ -52,10 +75,21 @@ export default function Header() {
               <></>
               :
               <>
-                <span onClick={() => setAct(true)}>회원가입</span>
+                { user?.name ? <>
+                <span onClick={handleLogout}>{user.name} 님</span>
+                { user?.native !== "1" ? (pathname !== "/mypage/*" && <Link to={`/mypage/${user.id}`}>
+                <button>마이페이지</button>
+                </Link>) : (pathname !== "/upload" && pathname !== "/upload-more" ) && 
+                  <Link to={"/upload"}>
+                    <button>업로드</button>
+                  </Link>
+                }
+                </>
+                 : <> <span onClick={() => setAct(true)}>회원가입</span>
                 <Link to={"/login"}>
                   <button>로그인</button>
                 </Link>
+                </>}
               </>
             }
           </div>
