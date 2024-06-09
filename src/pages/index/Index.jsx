@@ -5,7 +5,7 @@ import EventCart from "./components/EventCart"
 import Ad from "./components/Ad"
 import Location from  "./components/Location"
 import Recommend from "../../components/Recommend"
-import { useSetDummyData, useGetData } from "../../utils/useData"
+import { useSetDummyData, } from "../../utils/useData"
 
 export default function Index() {
   const data = useSetDummyData();
@@ -22,9 +22,9 @@ export default function Index() {
     <main>
       <ImageMenu />
     
-      <EventMenu title={"TYPE1"} sub={"type1"} data={data} />    
+      <EventMenu title={"객"} sub={"type1"} data={data} />    
     
-      <EventCart menu1={"TYPE2"} menu2={"TYPE3"} item1={data14} item2={data24} title1={"하하호호"} title2={"룰루랄라"} sub1={"type2"} sub2={"type3"} />
+      <EventCart menu1={"객"} menu2={"객"} item1={data14} item2={data24} title1={"하하호호"} title2={"룰루랄라"} sub1={"type2"} sub2={"type3"} />
     
       <Ad images={['/img/ad1.png', '/img/ad2.png']} />
     

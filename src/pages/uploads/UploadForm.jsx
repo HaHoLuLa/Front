@@ -1,8 +1,15 @@
+import { useEffect, useState } from "react";
 import "../../styles/uploadForm.css"
-import ReactQuill, { Quill } from 'react-quill';
+import ReactQuill, { } from 'react-quill';
 import "react-quill/dist/quill.snow.css";
 
 function UploadForm() {
+    const [ content, setContent ] = useState('')
+    useEffect(() => {}, [])
+    const handleChange = (value) => {
+        setContent(value)
+    }
+
     return (
         <main>
             <div className="FormContainer">
@@ -63,7 +70,7 @@ function UploadForm() {
                 </div>
 
                 {/* className="FormBodyContainer" */}
-                <ReactQuill />
+                <ReactQuill onChange={handleChange} value={content} />
 
                 <button className="FormGoButton">등록하기</button>
             </div>

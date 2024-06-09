@@ -64,7 +64,7 @@
   font-size: 20px;
 }
 
-.room-info > div:not(:first-child) > div:not(:first-child) > button {
+.room-info > div:not(:first-child) > div:not(:first-child) >a> button {
   font-size: 20px; 
   background-color: black; 
   color: white; 

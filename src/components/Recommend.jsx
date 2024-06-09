@@ -20,21 +20,21 @@ export default function Recommend({style, data, id, title, sub}) {
           navigation={{prevEl: `#prev${id}`, nextEl: `#next${id}`}}
         >
           {data.map((i, index) => (
-          <SwiperSlide key={index} onClick={() => nav(`/room/${i.hNum}`)}>
+          <SwiperSlide key={index} onClick={() => nav(`/room/${i.hnum}`)}>
 
             <div className="recommend-object">
 
-            <div style={{backgroundImage: "url('https://img.freepik.com/free-photo/forest-landscape_71767-127.jpg')"}}></div>
+            <div style={{backgroundImage: `url('${i.hpUrl}')`}}></div>
             <div>
   
               <div>
                 <span>{sub}</span>
-                <h3>{i.hName}</h3>
+                <h3>{i.hname}</h3>
                 {/* [특가] 이주현의 집 아남아파트{i} */}
               </div>
   
               <div>
-                <span><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-regular fa-star"></i> 341</span>
+                <span><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-regular fa-star"></i> {i.hrate}</span>
                 <span>가격 {i.rCost !== undefined ? i.rCost.toLocaleString() : ""}원 / {i.rPeople}명</span>
               </div>
             </div>

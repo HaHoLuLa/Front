@@ -1,6 +1,7 @@
 import "../../styles/UserPage.css"
 import { useEffect, useState } from "react";
 import axios from "axios"
+import { Link } from "react-router-dom";
 
 function UserPage() {
     const [ userInfo, setUserInfo ] = useState()
@@ -20,14 +21,14 @@ function UserPage() {
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ483Wq5A8uE8bxH4OqzfreSfUmH_GF72wSw&s" alt=""/>
                         </div>
                         <p>이름</p>
-                        <a href="">프로필 설정</a>
+                        <Link>프로필 설정</Link>
                     </div>
 
                     <div class="UserPageNev">
-                        <a>계정</a>
-                        <a>예약내역</a>
-                        <a>위시리스트</a>
-                        <a>최근 본</a>
+                        <Link>계정</Link>
+                        <Link>예약내역</Link>
+                        <Link>위시리스트</Link>
+                        <Link>최근 본</Link>
                     </div>
                 </div>
 

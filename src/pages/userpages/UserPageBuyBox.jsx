@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "../../styles/UserPageBuyBox.css"
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function UserPageBuyBox() {
     const [ resInfo, setResInfo ] = useState([])
@@ -16,17 +17,17 @@ function UserPageBuyBox() {
                 <div class="UsetPageLeftC">
                     <div class="UserProfileC">
                         <div class="UserProfileImg">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ483Wq5A8uE8bxH4OqzfreSfUmH_GF72wSw&s" />
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ483Wq5A8uE8bxH4OqzfreSfUmH_GF72wSw&s" alt=""/>
                         </div>
                         <p>이름</p>
-                        <a href="">프로필 설정</a>
+                        <Link>프로필 설정</Link>
                     </div>
 
                     <div class="UserPageNev">
-                        <a>계정</a>
-                        <a class="UserPageNow">예약내역</a>
-                        <a>위시리스트</a>
-                        <a>최근 본</a>
+                        <Link>계정</Link>
+                        <Link class="UserPageNow">예약내역</Link>
+                        <Link>위시리스트</Link>
+                        <Link>최근 본</Link>
                     </div>
                 </div>
 
@@ -36,7 +37,7 @@ function UserPageBuyBox() {
                         {resInfo.map((resInfo, index) => (
                         <div class="UsetPageBuyBox" key={index}>
                             <div class="UsetPageBuyBoxImg">
-                                <img class="UsetPageBuyBoxImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ483Wq5A8uE8bxH4OqzfreSfUmH_GF72wSw&s" />
+                                <img class="UsetPageBuyBoxImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ483Wq5A8uE8bxH4OqzfreSfUmH_GF72wSw&s" alt=""/>
                             </div>
 
                             <div>

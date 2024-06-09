@@ -1,15 +1,29 @@
+import { useLocation } from "react-router-dom"
 import "../../styles/reservation.css"
 import ResInfoModal from  "./ResInfoModal"
 import ResInfoModal1 from "./ResInfoModal1"
 import ResInfoModal2 from "./ResInfoModal2"
 import ResInfoModal3 from "./ResInfoModal3"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 function Reservation() {
     const [act, setAct] = useState(false);
     const [act1, setAct1] = useState(false);
     const [act2, setAct2] = useState(false);
     const [act3, setAct3] = useState(false);
+    const { state } = useLocation();
+    const [ data, setData ] = useState({})
+
+    const hNum = state?.hNum
+    const paNum = state?.paNum
+
+    useEffect(() => {
+        axios.post(`/detail/reservation-page?hNum=${hNum}&paNum=${paNum}`)
+    .then(res => { setData(res.data); console.log("asd",res.data)})
+    .catch(e => console.error(e))
+    }, [hNum, paNum])
+
     return (
         <>
             <ResInfoModal act={act} setAct={setAct} />
@@ -24,7 +38,7 @@ function Reservation() {
                             <div>
                                 <div className="res-name-div">
                                     <img className="res-img" src="https://i.travelapi.com/lodging/1000000/490000/481300/481277/3d487938_z.jpg" alt=""></img>
-                                    <h3>{"토부 호텔 레밴트 도쿄(Tobu Hotel Levant Tokyo)"}</h3>
+                                    <h3>{data.hname}</h3>
                                 </div>
                                 <div className="checkInOut">
                                     <p>체크인</p>
@@ -38,8 +52,8 @@ function Reservation() {
                             </div>
                             <div className="resInfo">
                                 <div className="resInfoBox">
-                                    <p style={{ width: "85%" }}>{"이코노미 트윈룸, 금연 (No Tower View)(Economy Twin Room, Non Smoking (No Tower View)), 싱글침대 2개, 무료 WiFi, 성인 2"}</p>
-                                    <p>{"198,594원"}</p>
+                                    <p style={{ width: "85%" }}>{data.rname}, {data.paFacility}</p>
+                                    <p>{data.rcost?.toLocaleString()}원</p>
                                 </div>
                                 <div className="resInfoBox">
                                     <p>{"세금"}</p>
@@ -63,9 +77,9 @@ function Reservation() {
                                 <hr />
                                 <div className="res-user-info-div">
                                     <h3>주문 회원 정보</h3>
-                                    <p>{"goeswonng0es1@gmail.com"}</p>
-                                    <p>{"김승민"}</p>
-                                    <p>{"01093626554"}</p>
+                                    <p>{data.uemail}</p>
+                                    <p>{data.uname}</p>
+                                    <p>{data.uphone}</p>
                                 </div>
                             </div>
                         </div>

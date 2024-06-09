@@ -5,9 +5,9 @@ import { GoogleMap, LoadScript,
   MarkerF, InfoWindowF
  } from "@react-google-maps/api"
 import axios from "axios"
-import { useGetData } from "../../utils/useData"
+// import { useGetData } from "../../utils/useData"
 
-const MapPopup = ({act, setAct}) => {
+const MapPopup = ({act, setAct, count}) => {
   const [selectedMarker, setSelectedMarker] = useState(null);
 
   const handleSetMarker = (marker) => {
@@ -40,8 +40,20 @@ const MapPopup = ({act, setAct}) => {
         <div style={{display: "flex", justifyContent: "flex-end"}}><button style={{fontSize: "30px", backgroundColor: "transparent", border: "none", height: "30.75px", lineHeight: "30.75px"}} onClick={handleClose}>&times;</button></div>
         <div style={{display: "flex"}}>
           <div style={{width: "30%", paddingLeft: "30px"}}>
-            <h2 style={{marginTop: "0"}}>예약 가능 숙소 123개</h2>
-            
+            <h2 style={{marginTop: "0"}}>예약 가능 숙소 {count}개</h2>
+            <div className="list-wrapper">
+              
+              <div className="list-object">
+                <div className="image" style={{backgroundImage: `url(${'https://albergoetruria.it/volterra/wp-content/uploads/2023/05/albergo-etruria-terrazza-cover.jpg'})`}} />
+                <div className="description">
+                  <h3>호텔</h3>
+                  
+                  
+                  <span>가격</span>
+                </div>
+              </div>
+              
+            </div>
           </div>
           <div style={{flex: "1", paddingRight: "30px"}}>
           <LoadScript googleMapsApiKey={`${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}>
@@ -100,7 +112,7 @@ export const Sub1 = () => {
   const { locate } = useParams()
   const [ act, setAct ] = useState(false);
   // const data = useGetData("/search/city-hotels?city=튀빙겐")
-  const [ data, setData ] = useState(null)
+  const [ data, setData ] = useState([])
 
   useEffect(() => {
     axios.get(`/search/city-hotels?city=${locate}`)
@@ -109,11 +121,11 @@ export const Sub1 = () => {
       console.log(res.data)
     })
     .catch(e => console.error(e))
-  }, [])
+  }, [locate])
 
   return (
     <>
-    <MapPopup act={act} setAct={setAct} />
+    <MapPopup act={act} setAct={setAct} count={data.length} />
     <main>
     <h2>'{locate}' 검색 결과</h2>
     <div className="main">
@@ -146,7 +158,7 @@ export const Sub1 = () => {
 
         <div className="sort-menu">
 
-          <h4>134건의 검색 결과</h4>
+          <h4>{data.length}건의 검색 결과</h4>
 
           {/* <div>
             <select><option>예약가능 날짜</option></select>

@@ -33,6 +33,7 @@ import UserPageWish from './pages/userpages/UserPageWish'
 import { 카운터 as Counter } from './tests/카운터'
 import { 지도 } from './tests/지도'
 import { 타이머 } from './tests/타이머'
+import Place from "./tests/Place"
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -110,6 +111,7 @@ export default function App() {
         <Route path="카운터" element={<Counter />} />
         <Route path="지도" element={<지도 />} />
         <Route path="타이머" element={<타이머 />} />
+        <Route path="place" element={<Place />} />
       </Route>
       {/* 본인인증 */}
       <Route path="/identify" element={<Identify />} />

@@ -25,7 +25,7 @@ export default function LoginUtil() {
       withCredentials: true,
     })
     .then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       setData(res.data);
     })
     .catch(e => console.error(e));
@@ -35,7 +35,7 @@ export default function LoginUtil() {
   useEffect(() => {
     if (data) {
       nav("/")
-    }
+    } 
   }, [data, nav])
 
   return (

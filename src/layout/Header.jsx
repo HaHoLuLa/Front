@@ -4,8 +4,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const SearchBar = () => {
+  const { pathname } = useLocation()
   const [ search, setSearch ] = useState("")
   const nav = useNavigate();
+
+  useEffect(() => {
+    if (pathname === "/") {
+      setSearch("")
+    }
+  }, [pathname])
   // value={search}
 
   return (
@@ -16,7 +23,7 @@ const SearchBar = () => {
           nav(`/search/${encodeURIComponent(search)}`)
           // setSearch("")
         }
-      }}/>
+      }} value={search} />
     </div>
   )
 }

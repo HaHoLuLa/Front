@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../../styles/UserPageWish.css"
 
 function UserPageWish() {
@@ -8,17 +9,17 @@ function UserPageWish() {
                 <div class="UsetPageLeftC">
                     <div class="UserProfileC">
                         <div class="UserProfileImg">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ483Wq5A8uE8bxH4OqzfreSfUmH_GF72wSw&s" />
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ483Wq5A8uE8bxH4OqzfreSfUmH_GF72wSw&s" alt="" />
                         </div>
                         <p>이름</p>
-                        <a href="">프로필 설정</a>
+                        <Link>프로필 설정</Link>
                     </div>
 
                     <div class="UserPageNev">
-                        <a>계정</a>
-                        <a>예약내역</a>
-                        <a class="UserPageNow">위시리스트</a>
-                        <a>최근 본</a>
+                        <Link>계정</Link>
+                        <Link>예약내역</Link>
+                        <Link class="UserPageNow">위시리스트</Link>
+                        <Link>최근 본</Link>
                     </div>
                 </div>
 
@@ -26,7 +27,7 @@ function UserPageWish() {
                     <div class ="UsetPageRightCC">
                         <div class="UsetPageWishBox1">
                             <div class="UsetPageWishBoxTop">
-                                <img class="UsetPageWishImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ483Wq5A8uE8bxH4OqzfreSfUmH_GF72wSw&s" />
+                                <img class="UsetPageWishImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ483Wq5A8uE8bxH4OqzfreSfUmH_GF72wSw&s" alt="" />
                             </div>
                             <div class="UsetPageWishBoxBot">
                                 <p class="UsetPageWishName">안되네 호텔</p>
@@ -37,7 +38,7 @@ function UserPageWish() {
 
                         <div class="UsetPageWishBox1">
                             <div class="UsetPageWishBoxTop">
-                                <img class="UsetPageWishImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ483Wq5A8uE8bxH4OqzfreSfUmH_GF72wSw&s" />
+                                <img class="UsetPageWishImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ483Wq5A8uE8bxH4OqzfreSfUmH_GF72wSw&s" alt="" />
                             </div>
                             <div class="UsetPageWishBoxBot">
                                 <p class="UsetPageWishName">안되네 호텔</p>
@@ -48,7 +49,7 @@ function UserPageWish() {
 
                         <div class="UsetPageWishBox0">
                             <div class="UsetPageWishBoxTop">
-                                <img class="UsetPageWishImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ483Wq5A8uE8bxH4OqzfreSfUmH_GF72wSw&s" />
+                                <img class="UsetPageWishImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ483Wq5A8uE8bxH4OqzfreSfUmH_GF72wSw&s" alt="" />
                             </div>
                             <div class="UsetPageWishBoxBot">
                                 <p class="UsetPageWishName">안되네 호텔</p>
