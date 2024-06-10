@@ -2,12 +2,32 @@ import { useEffect, useState } from "react";
 import "../../styles/uploadForm.css"
 import ReactQuill, { } from 'react-quill';
 import "react-quill/dist/quill.snow.css";
+import axios from "axios";
 
 function UploadForm() {
     const [ content, setContent ] = useState('')
+    const [ form, setForm ] = useState({
+        content: ""
+    })
+    const [ file, setFile ] = useState(null)
+
     useEffect(() => {}, [])
+
     const handleChange = (value) => {
         setContent(value)
+    }
+
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0])
+        console.log(file)
+    }
+
+    const handleSubmit = async () => {
+        try {
+            await axios()
+        } catch (e) {
+            console.error(e)
+        }
     }
 
     return (
@@ -18,7 +38,10 @@ function UploadForm() {
 
                 <div className="FormHeadContainer">
                     <div className="FormImgContainer">
-                        <div className="FormTopImg"></div>
+                        <div className="FormTopImg">
+                            <label htmlFor="image"><i className="fa-solid fa-arrow-up-from-bracket" style={{fontSize: "50px"}}></i></label>
+                            <input type="file" name="image" id="image" style={{display: "none"}} accept="image/png, image/jpeg" onChange={handleFileChange} />
+                        </div>
                         <div className="FormBottomImg">
                             <div className ="FormInnerImg"></div>
                         </div>
@@ -26,8 +49,10 @@ function UploadForm() {
 
                     <div className="FormTextContainer">
                         <div className="FormText">
-                            <p className="FormTextHead">아무도 안 갈 호텔</p>
-                            <p className="FormTextBody">대한민국 어디에도 없음</p>
+                            {/* <p className="FormTextHead">아무도 안 갈 호텔</p> */}
+                            <input type="text" name="" id="" value={"아무도 안 갈 호텔"} className="FormTextHead" onChange={(e) => console.log(e.target.value)} />
+                            <input type="text" className="FormTextBody" onChange={(e) => console.log(e.target.value)} placeholder="객실 이름" />
+                            
                         </div>
 
                         <div className="FormInput">

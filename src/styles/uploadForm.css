@@ -48,6 +48,9 @@ p {
         }
             .FormTopImg {
                 height: 75%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 border-bottom: solid 1px #ccc;
             }
 
@@ -76,10 +79,12 @@ p {
                 .FormTextHead {
                     font-size: 30px;
                     margin-bottom: 5px;
+                    /* border: none; */
                 }
 
                 .FormTextBody {
-                    color: #7a7a7a;
+                    font-size: 20px;
+                    /* color: #7a7a7a; */
                 }
 
 
