@@ -79,7 +79,11 @@ p {
                 .FormTextHead {
                     font-size: 30px;
                     margin-bottom: 5px;
-                    /* border: none; */
+                    border: none;
+                }
+
+                .FormTextHead:focus {
+                    outline: none;
                 }
 
                 .FormTextBody {

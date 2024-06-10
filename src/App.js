@@ -34,6 +34,7 @@ import { 카운터 as Counter } from './tests/카운터'
 import { 지도 } from './tests/지도'
 import { 타이머 } from './tests/타이머'
 import Place from "./tests/Place"
+import SearchNative from "./pages/search/SearchNative"
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -80,6 +81,7 @@ export default function App() {
         {/* 검색 결과 */}
         <Route path="/search/:locate" element={<Sub1 />} />
         <Route path="/search/nation" element={<SearchNation />} />
+        <Route path="/search/native" element={<SearchNative />} />
         {/* 객실 페이지 */}
         <Route path="/room" element={<Sub3 />}>
           <Route path=":num" element={<Sub3 />} />

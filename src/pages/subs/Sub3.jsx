@@ -33,6 +33,7 @@ export const Sub3 = () => {
   const [ roomPic, setRoomPic ] = useState([])
   const [ simiHotel, setSimiHotel ] = useState([])
   const [ native, setNative ] = useState({})
+  const [ main, setMain ] = useState({})
   const { num } = useParams()
 
   useEffect(() => {
@@ -72,7 +73,7 @@ export const Sub3 = () => {
     if (roomData.paNum) {
 
       axios.post(`/detail/room-picture?paNum=${roomData.paNum}`)
-      .then(res => {setRoomPic(res.data); console.log("룸픽",res.data)})
+      .then(res => { setMain(res.data.shift()); setRoomPic(res.data); console.log("룸픽",res.data);})
       .catch(e => console.error(e))
 
       axios.post(`/detail/native-info?paNum=${roomData.paNum}`)
@@ -87,13 +88,13 @@ export const Sub3 = () => {
       <div>
         <div>
           <div
-            style={{backgroundImage: "url('https://ic.zigbang.com/vr/ap-northeast-2/houses/L55HM8HR/cover/medium/cover.jpg?w=400&h=300&q=70&a=1&watermark=false')"}}>
+            style={{backgroundImage: `url('http://localhost:8080/${encodeURIComponent(main?.pic).replace(".%5Cuploads%5C", "uploads/")}')`}}>
           </div>
           <div>
             {roomPic.map((item, index) => (
 
             <div key={index}
-              style={{backgroundImage: `url('${item.pic}')`}}>
+              style={{backgroundImage: `url('http://localhost:8080/${encodeURIComponent(item?.pic).replace(".%5Cuploads%5C", "uploads/")}')`}}>
             </div>
             ))}
             {/* <div

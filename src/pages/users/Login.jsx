@@ -15,9 +15,9 @@ export default function Login() {
         <LoginUtil />
 
         <div className="sns-btn-container">
-          <div className="naver">
+          {/* <div className="naver">
             <b>N</b>
-          </div>
+          </div> */}
           <div className="google">
             {/* <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="40" height="40" rx="20" fill="#F2F2F2" />
@@ -36,9 +36,9 @@ export default function Login() {
             <GoogleLoginTest />
           </div>
 
-          <div className="kakao">
+          {/* <div className="kakao">
             <i className="fa-solid fa-comment"></i>
-          </div>
+          </div> */}
         </div>
         <div className="login-suggest">
           <span>계정이 없으신가요? <u onClick={() => setAct(true)}>회원가입하기</u></span>

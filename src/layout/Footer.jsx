@@ -7,7 +7,7 @@ export default function Footer() {
         <p>수업 시간 09:00~16:15</p>
         <p>점심 시간 12:35~13:35</p>
         <p>유선 상담 1234-5678</p>
-        <button>1:1 상담</button>
+        <button onClick={() => window.open('https://pf.kakao.com/_yepxiG/chat', '_blank', 'width=500,height=500')}>1:1 상담</button>
       </div>
       <div>
         <div>

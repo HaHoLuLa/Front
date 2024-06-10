@@ -24,6 +24,11 @@ function Reservation() {
     .catch(e => console.error(e))
     }, [hNum, paNum])
 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        await axios.post(`/detail/reservation?paNum=${paNum}`).then(console.log).catch(e => console.error(e))
+    }
+
     return (
         <>
             <ResInfoModal act={act} setAct={setAct} />
@@ -37,7 +42,7 @@ function Reservation() {
                         <div className="res-div">
                             <div>
                                 <div className="res-name-div">
-                                    <img className="res-img" src="https://i.travelapi.com/lodging/1000000/490000/481300/481277/3d487938_z.jpg" alt=""></img>
+                                    <img className="res-img" src={data?.hurl} alt=""></img>
                                     <h3>{data.hname}</h3>
                                 </div>
                                 <div className="checkInOut">
@@ -56,20 +61,20 @@ function Reservation() {
                                     <p>{data.rcost?.toLocaleString()}원</p>
                                 </div>
                                 <div className="resInfoBox">
-                                    <p>{"세금"}</p>
-                                    <p>{"37,494원"}</p>
+                                    <p>{"수수료"}</p>
+                                    <p>{data.paCharge?.toLocaleString()}원</p>
                                 </div>
-                                <div className="resInfoBox">
+                                {/* <div className="resInfoBox">
                                     <p>{"첫 주문 할인"}</p>
                                     <p>{"10,000원"}</p>
                                 </div>
                                 <div className="resInfoBoxEvent">
                                     <p>{"제로마진 할인"}</p>
                                     <p>{"10,000원"}</p>
-                                </div>
+                                </div> */}
                                 <div className="resInfoTextSpaceBetween">
                                     <p>총 상품 금액</p>
-                                    <h4>240,806원</h4>
+                                    <h4>{(data.rcost + data.paCharge)?.toLocaleString()}원</h4>
                                 </div>
                             </div>
                             <div className="res-user-info">
@@ -88,12 +93,12 @@ function Reservation() {
                                 <h2>결제 정보<hr /></h2>
                                 <div className="payInfoSpaceBetween">
                                     <p>주문 금액</p>
-                                    <p>{"240532원"}</p>
+                                    <p>{(data.rcost + data.paCharge)?.toLocaleString()}원</p>
                                 </div>
                                 <div className="payInfoTotalPrice">
                                     <div className="payInfoSpaceBetween">
                                         <p style={{ fontWeight: "700", fontSize: "16px" }}>총 결제 금액</p>
-                                        <h5 style={{ fontSize: "24px", lineHeight: "29px", margin: "0" }}>{"240532원"}</h5>
+                                        <h5 style={{ fontSize: "24px", lineHeight: "29px", margin: "0" }}>{(data.rcost + data.paCharge)?.toLocaleString()}원</h5>
                                     </div>
                                 </div>
                                 <div className="payInfoSpaceBetween">
@@ -120,7 +125,7 @@ function Reservation() {
                                     <p>{"24.06.10 23시 59분"}까지 취소 : 전액 환불</p>
                                     <p>{"24.06.10 23시 59분"} 이후 취소 : 환불 불가</p>
                                 </div>
-                                <button className="payInfoButton" style={{ marginTop: "40px" }}>{"240532"}원 결제하기</button>
+                                <button className="payInfoButton" style={{ marginTop: "40px" }} onClick={handleSubmit}>{(data.rcost + data.paCharge)?.toLocaleString()}원 결제하기</button>
                             </div>
                         </div>
                     </div>

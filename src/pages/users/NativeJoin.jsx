@@ -1,7 +1,24 @@
+import { useState } from "react";
 import "../../styles/nativeJoin.css"
 import { Link } from "react-router-dom";
 
 export default function NativeJoin() {
+    const [ form, setForm ] = useState({
+        name: "",
+        id: "",
+        pw: "",
+        email: "",
+        phone: "",
+    })
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm(prev => ({
+            ...prev,
+            [name]: value
+        }))
+    }
+
     return (
         <main>
             <div className="native-login-box" style={{ marginTop: "50px" }}>
@@ -9,12 +26,12 @@ export default function NativeJoin() {
 
                 <h2>이름/법인명</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <input className="native-basic-bar" type="text" name placeholder="이름을 입력하세요" />
+                    <input className="native-basic-bar" type="text" name="name" placeholder="이름을 입력하세요" onChange={handleChange}/>
                 </div>
 
                 <h2>아이디</h2>
                 <div style={{ display: "flex", justifyContent: "center", width: "364px", marginLeft: "68px" }}>
-                    <input className="native-id-bar" type="text" style={{ marginRight: "20px" }} placeholder="아이디를 입력하세요" />
+                    <input className="native-id-bar" type="text" style={{ marginRight: "20px" }} placeholder="아이디를 입력하세요" onChange={handleChange} name="id"/>
                     <button className="native-check-btn" style={{ width: "80px" }}>중복 확인</button>
                 </div>
 
@@ -25,7 +42,17 @@ export default function NativeJoin() {
 
                 <h2>비밀번호 확인</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <input className="native-basic-bar" type="password" placeholder="비밀번호를 다시 입력하세요" />
+                    <input className="native-basic-bar" type="password" placeholder="비밀번호를 다시 입력하세요" name="pw" onChange={handleChange} />
+                </div>
+
+                <h2>전화번호</h2>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    <input className="native-basic-bar" type="text" placeholder="전화번호를 입력하세요" name="phone" onChange={handleChange}/>
+                </div>
+
+                <h2>이메일</h2>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    <input className="native-basic-bar" type="text" placeholder="이메일을 입력하세요" name="email" onChange={handleChange}/>
                 </div>
 
                 <h2>개인정보 수집 및 이용 동의서</h2>
@@ -59,7 +86,7 @@ export default function NativeJoin() {
                 <p style={{ marginTop: "25px", textAlign: "center" }}>개인정보 수집 ∙ 이용에 대한 동의에 동의하십니까? <input type="checkbox" name="native-join-ok" value="yyy" /></p>
 
                 <div style={{ display: "flex", justifyContent: "center", marginTop: "25px" }}>
-                    <Link to={"/native-join1"}>
+                    <Link to={"/native-join1"} state={{form: form}}>
                     <button className="native-check-btn" onClick={() => {
                         window.scrollTo({
                             top: 0,

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function GoogleLoginTest() {
   const [user, setUser] = useState(null);
+  const [ 있는지여부, set있는지여부 ] = useState(false)
   const nav = useNavigate();
 
   const handleLoginSuccess = async (response) => {
@@ -19,6 +20,22 @@ export default function GoogleLoginTest() {
       const userInfo = res.data;
       setUser(userInfo);
       console.log('사용자 정보 :', userInfo);
+
+      let result
+
+      try {
+        result = await axios.post(`/login/google-check?sub=${userInfo.sub}`)
+      } catch (e) {
+        console.error(e)
+      }
+
+      if (result.data) {
+        await axios.post(`/login/google-login?sub=${userInfo.sub}`).then().catch(e => console.error(e))
+        window.alert("로그인 되었습니다")
+      } else {
+        await axios.post(`/login/google-join`, {name: userInfo.name, sub: userInfo.sub, email: userInfo.email}).then(res => console.log(res.data)).catch(e => console.error(e))
+        window.alert("회원가입 되었습니다.")
+      }
       nav("/")
     } catch (error) {
       console.error('로그인 실패 :', error);
@@ -35,6 +52,8 @@ export default function GoogleLoginTest() {
     //   console.error('Error fetching additional user info:', error);
     // }
   };
+
+  
 
   // const handleLogin = useGoogleLogin({
   //   onSuccess: res => handleLoginSuccess(res),
@@ -66,7 +85,7 @@ export default function GoogleLoginTest() {
         <GoogleLogin
           onSuccess={handleLoginSuccess}
           onError={handleLoginFailure}
-          useOneTap
+          // useOneTap
           shape="circle"
           type="icon"
           // auto_select

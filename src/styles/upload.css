@@ -92,6 +92,7 @@
       width: 30%;
       border: solid 1px #ccc;
       margin-right: 10px;
+      max-height: 60px;
     }
 
     .searchLocationResult img {

@@ -1,9 +1,10 @@
 import "../../styles/UserPage.css"
 import { useEffect, useState } from "react";
 import axios from "axios"
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function UserPage() {
+    const { num } = useParams()
     const [ userInfo, setUserInfo ] = useState()
     useEffect(() => {
         axios.get("/my-page/user-info")
@@ -25,8 +26,8 @@ function UserPage() {
                     </div>
 
                     <div class="UserPageNev">
-                        <Link>계정</Link>
-                        <Link>예약내역</Link>
+                        <Link className="UserPageNow">계정</Link>
+                        <Link to={`/mypage/${num}/buy`}>예약내역</Link>
                         <Link>위시리스트</Link>
                         <Link>최근 본</Link>
                     </div>

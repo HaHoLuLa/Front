@@ -28,17 +28,17 @@ export default function EventMenu({title, data, sub}) {
           <SwiperSlide key={index} onClick={() => nav(`/room/${i.hNum}`)}>
 
           <div className="event-object">
-            <div style={{backgroundImage: "url('https://img.freepik.com/free-photo/forest-landscape_71767-127.jpg')"}}></div>
+            <div style={{backgroundImage: `url('http://localhost:8080/${encodeURIComponent(i?.paPicUrl).replace(".%5Cuploads%5C", "uploads/")}')`}}></div>
             <div>
 
               <div>
-                <span>{sub}</span>
-                <h4>{i.hName}</h4>
+                <h4>{i.hname}</h4>
+                <span>{i.rname}</span>
               </div>
 
               <div>
-                <span><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-regular fa-star"></i> 341</span>
-                <span>가격 {i.rCost !== undefined ? i.rCost.toLocaleString() : ""}원 / {i.rPeople}인</span>
+                {/* <span><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-regular fa-star"></i> 341</span> */}
+                <span>가격 {i.paPrice?.toLocaleString()}원</span>
               </div>
             </div>
           </div>
