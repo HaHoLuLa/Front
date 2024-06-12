@@ -25,6 +25,7 @@ export default function App() {
         {/* 검색 결과 */}
         <Route path="/search/:locate" element={<Sub1 />} />
         <Route path="/search/nation" element={<SearchNation />} />
+        <Route path="/search/native" element={<SearchNative />} />
         {/* 객실 페이지 */}
         <Route path="/room" element={<Sub3 />}>
           <Route path=":num" element={<Sub3 />} />
@@ -43,15 +44,26 @@ export default function App() {
         <Route path="/event" element={<Event />} />
         {/* 예약하기 */}
         <Route path="/order" element={<Reservation />} />
+        {/* 현지인 소개 */}
+        <Route path="/native-desc" element={<NativeDesc />} />
       </Route>
+      {/* 채팅 */}
+      <Route path="/chat" element={<Chat2 />} />
       {/* /test 들은 테스트용 */}
-      <Route path="/test/map" element={<Map />} />
-      <Route path="/test/swiper" element={<SwiperTest /> } />
-      <Route path="/test/hook" element={<HookTest />} />
-      <Route path="/test/chat/:sender/:id" element={<Chat />} />
-      <Route path="/test/google" element={<GoogleLoginTest />} />
-      <Route path="/test/google2" element={<Test />} />
-      <Route path="/test/image" element={<ImageUpload />} />
+      <Route path="/test">
+        <Route path="map" element={<Map />} />
+        <Route path="swiper" element={<SwiperTest /> } />
+        <Route path="hook" element={<HookTest />} />
+        <Route path="chat/:sender/:id" element={<Chat />} />
+        <Route path="google" element={<GoogleLoginTest />} />
+        <Route path="google2" element={<Test />} />
+        <Route path="image" element={<ImageUpload />} />
+        <Route path="카운터" element={<Counter />} />
+        <Route path="지도" element={<MapKo />} />
+        <Route path="타이머" element={<TimerKo />} />
+        <Route path="place" element={<Place />} />
+        <Route path="dum" element={<ChatDum />} />
+      </Route>
       {/* 본인인증 */}
       <Route path="/identify" element={<Identify />} />
       {/* 리뷰 */}
