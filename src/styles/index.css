@@ -219,6 +219,11 @@
   justify-content: space-between;
 }
 
+.cart-object > div:first-child > i.fa-solid {
+  font-size: 30px;
+  position: relative;
+}
+
 .cart-object>div:first-child>div:first-child {
   background-color: var(--theme-color);
   width: 50px;

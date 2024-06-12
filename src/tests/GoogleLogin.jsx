@@ -1,11 +1,10 @@
-import { GoogleLogin, googleLogout } from "@react-oauth/google";
+import { GoogleLogin,  } from "@react-oauth/google"; //googleLogout
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function GoogleLoginTest() {
   const [user, setUser] = useState(null);
-  const [ 있는지여부, set있는지여부 ] = useState(false)
   const nav = useNavigate();
 
   const handleLoginSuccess = async (response) => {
@@ -65,21 +64,22 @@ export default function GoogleLoginTest() {
     console.log('로그인 실패 :', error);
   };
 
-  const handleLogout = () => {
-    googleLogout();
-    setUser(null);
-    console.log('로그아웃');
-  };
+  // const handleLogout = () => {
+  //   googleLogout();
+  //   setUser(null);
+  //   console.log('로그아웃');
+  // };
 
 
   return (
     <div>
       {/* <h1>Google Login</h1> */}
       {user ? (
-        <div>
-          {/* <h2>환영합니다, {user.name}</h2> */}
-          <button onClick={handleLogout}>로그아웃</button>
-        </div>
+        // <div>
+        //   {/* <h2>환영합니다, {user.name}</h2> */}
+        //   <button onClick={handleLogout}>로그아웃</button>
+        // </div>
+        <></>
       ) : (
         <>
         <GoogleLogin

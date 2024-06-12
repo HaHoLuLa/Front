@@ -143,6 +143,9 @@ export const Sub3 = () => {
           <div>
             <p>{native.npName}</p>
             <p>{native.npPhone}</p>
+            <Link to={"/chat"} state={{native: native.nid}}>
+              <button >채팅하기</button>
+            </Link>
           </div>
         </div>
       </div>

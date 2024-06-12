@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import "../../styles/nativeJoin1.css"
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function NativeJoin1() {
+    const nav = useNavigate()
     const { state } = useLocation()
     // let pForm = state?.form
     const [ form, setForm ] = useState({
@@ -28,6 +29,7 @@ export default function NativeJoin1() {
 
     const handleSubmit = async () => {
         await axios.post(`/login/join`, form).then(res => console.log(res.data)).catch(e => console.error(e))
+        nav("/")
     }
 
     return (
@@ -52,7 +54,7 @@ export default function NativeJoin1() {
 
                 <h2>간단 소개</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <input className="native1-basic-bar" type="text" name="intro" placeholder="간단한 소개 문구를 적어주세요." />
+                    <input className="native1-basic-bar" type="text" name="intro" placeholder="간단한 소개 문구를 적어주세요." onChange={handleChange}/>
                 </div>
             
                 <h2>정산 은행 선택</h2>

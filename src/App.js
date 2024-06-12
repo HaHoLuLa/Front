@@ -31,10 +31,13 @@ import ImageUpload from "./tests/ImageUpload"
 import UserPageBuyBox from './pages/userpages/UserPageBuyBox'
 import UserPageWish from './pages/userpages/UserPageWish'
 import { 카운터 as Counter } from './tests/카운터'
-import { 지도 } from './tests/지도'
-import { 타이머 } from './tests/타이머'
+import { 지도 as MapKo } from './tests/지도'
+import { 타이머 as TimerKo } from './tests/타이머'
 import Place from "./tests/Place"
 import SearchNative from "./pages/search/SearchNative"
+import Chat2 from "./pages/chats/Chat"
+import NativeDesc from "./pages/native/NativeDesc"
+import ChatDum from "./pages/chats/Chat2"
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -100,7 +103,11 @@ export default function App() {
         <Route path="/event" element={<Event />} />
         {/* 예약하기 */}
         <Route path="/order" element={<Reservation />} />
+        {/* 현지인 소개 */}
+        <Route path="/native-desc" element={<NativeDesc />} />
       </Route>
+      {/* 채팅 */}
+      <Route path="/chat" element={<Chat2 />} />
       {/* /test 들은 테스트용 */}
       <Route path="/test">
         <Route path="map" element={<Map />} />
@@ -111,9 +118,10 @@ export default function App() {
         <Route path="google2" element={<Test />} />
         <Route path="image" element={<ImageUpload />} />
         <Route path="카운터" element={<Counter />} />
-        <Route path="지도" element={<지도 />} />
-        <Route path="타이머" element={<타이머 />} />
+        <Route path="지도" element={<MapKo />} />
+        <Route path="타이머" element={<TimerKo />} />
         <Route path="place" element={<Place />} />
+        <Route path="dum" element={<ChatDum />} />
       </Route>
       {/* 본인인증 */}
       <Route path="/identify" element={<Identify />} />

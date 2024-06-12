@@ -35,7 +35,7 @@ export default function Recommend({style, data, id, title, sub}) {
   
               <div>
                 <span><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-regular fa-star"></i> {i.hrate}</span>
-                <span>가격 {i.rCost !== undefined ? i.rCost.toLocaleString() : ""}원 / {i.rPeople}명</span>
+                <span>가격 {i.rCost?.toLocaleString()}원 / {i.rPeople}명</span>
               </div>
             </div>
           </div>

@@ -1,13 +1,15 @@
 import axios from "axios"
 import "../styles/sub4.css"
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 function CityList() {
   const [ data, setData ] = useState([])
+  const nav = useNavigate()
 
   useEffect(() => {
     axios.get("/search/getCity-all")
-    .then(res => setData(res.data))
+    .then(res => {setData(res.data); console.log(res.data)})
     .catch(e => console.error(e))
   }, [])
   
@@ -17,7 +19,7 @@ function CityList() {
       <div className="city-menu" key={index} style={{backgroundImage: `url('${item.pic}')`, marginBottom: '20px'}}>
         <h1>{item.name}</h1>
         <span>{item.info}</span>
-        <button>숙소 보러가기 &gt;</button>
+        <button onClick={() => nav(`/search/${item.name}`)}>숙소 보러가기 &gt;</button>
       </div>
     ))}
   </main>

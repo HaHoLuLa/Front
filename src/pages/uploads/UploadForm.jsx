@@ -3,7 +3,7 @@ import "../../styles/uploadForm.css"
 import ReactQuill, { } from 'react-quill';
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function UploadForm() {
     const [ content, setContent ] = useState('')
@@ -16,6 +16,7 @@ function UploadForm() {
     const [ file, setFile ] = useState([])
     const [ data, setData ] = useState([])
     const [ roomData, setRoomData ] = useState([])
+    const nav = useNavigate()
     // const [ charge, setCharge ] = useState(0.0);
 
     const { state } = useLocation()
@@ -91,6 +92,7 @@ function UploadForm() {
                 "Content-Type": "multipart/form-data",
             }
         }).then(console.log("성공")).catch(e => console.error(e))
+        nav("/")
     }
 
     const handleSelectChange = (e) => {

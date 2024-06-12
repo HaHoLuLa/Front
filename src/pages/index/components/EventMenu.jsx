@@ -25,7 +25,7 @@ export default function EventMenu({title, data, sub}) {
         >
 
         {data.map((i, index) => (
-          <SwiperSlide key={index} onClick={() => nav(`/room/${i.hNum}`)}>
+          <SwiperSlide key={index} onClick={() => nav(`/room/${i.hnum}`)}>
 
           <div className="event-object">
             <div style={{backgroundImage: `url('http://localhost:8080/${encodeURIComponent(i?.paPicUrl).replace(".%5Cuploads%5C", "uploads/")}')`}}></div>

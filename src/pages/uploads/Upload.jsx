@@ -1,6 +1,6 @@
 import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api"
 import "../../styles/upload.css"
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -24,7 +24,7 @@ const myStyles = [
   ];
 
 export const Upload = () => {
-  const nav = useNavigate();
+//   const nav = useNavigate();
   const [ data, setData ] = useState([]);
   const [ input, setInput ] = useState('')
   const [ selected, setSelected ] = useState({

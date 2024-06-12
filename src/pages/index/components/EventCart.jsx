@@ -41,37 +41,39 @@ export default function EventCart({menu1, menu2, item1, item2, title1, title2, s
 
       { act ? item1.map((item, index) => (
 
-        <div className="cart-object" key={index} onClick={() => nav(`/room/${item.hNum}`)}>
-        <div style={{backgroundImage: "url('https://img.freepik.com/free-photo/forest-landscape_71767-127.jpg')"}}>
-          <div>{title1}</div>
-          <div><span>{sub1}</span></div>
+        <div className="cart-object" key={index} onClick={() => nav(`/room/${item.hnum}`)}>
+        <div style={{backgroundImage: `url('http://localhost:8080/${encodeURIComponent(item?.paPicUrl).replace(".%5Cuploads%5C", "uploads/")}')`}}>
+          {/* <div>{index + 1}</div> */}
+          <i className="fa-solid fa-bookmark" style={index === 0 ? {color: "gold"} : index === 1 ? {color: "silver"} : index === 2 ? {color: "#CD7F32"} : {}}><span style={{position: "absolute", left: "5px", color: "white", fontSize: "20px"}}>{index + 1}</span></i>
+          <div><span>{item.rname}</span></div>
         </div>
 
         <div>
           <div>
-            <span>{item.hName}</span>
+            <h3 style={{marginTop: "0"}}>{item.hname}</h3>
             {/* <div><span>#우리집</span>&nbsp;<span>#집이_최고지</span></div> */}
           </div>
-          <div><h3>{item.rCost !== undefined ? item.rCost.toLocaleString() : ""}원~</h3></div>
+          <div><h3>{item.paPrice?.toLocaleString()}원~</h3></div>
         </div>
       </div>
 
 )) : item2.map((item, index) => (
 
-  <div className="cart-object" key={index}>
-  <div style={{backgroundImage: "url('https://img.freepik.com/free-photo/forest-landscape_71767-127.jpg')"}}>
-    <div>{title2}</div>
-    <div><span>{sub2}</span></div>
-  </div>
+  <div className="cart-object" key={index} onClick={() => nav(`/room/${item.hnum}`)}>
+        <div style={{backgroundImage: `url('http://localhost:8080/${encodeURIComponent(item?.paPicUrl).replace(".%5Cuploads%5C", "uploads/")}')`}}>
+          {/* <div>{index + 1}</div> */}
+          <i className="fa-solid fa-bookmark" style={index === 0 ? {color: "gold"} : index === 1 ? {color: "silver"} : index === 2 ? {color: "#CD7F32"} : {}}><span style={{position: "absolute", left: "5px", color: "white", fontSize: "20px"}}>{index + 1}</span></i>
+          <div><span>{item.rname}</span></div>
+        </div>
 
-  <div>
-    <div>
-      <span>{item.hName}</span>
-      {/* <div><span>#우리집</span>&nbsp;<span>#집이_최고지</span></div> */}
-    </div>
-    <div><h3>{item.rCost !== undefined ? item.rCost.toLocaleString() : ""}원~</h3></div>
-  </div>
-</div>
+        <div>
+          <div>
+            <h3 style={{marginTop: "0"}}>{item.hname}</h3>
+            {/* <div><span>#우리집</span>&nbsp;<span>#집이_최고지</span></div> */}
+          </div>
+          <div><h3>{item.paPrice?.toLocaleString()}원~</h3></div>
+        </div>
+      </div>
 
 ))}
       
