@@ -30,7 +30,7 @@ export default function ImageMenu() {
         <h1 style={{marginBottom: "10px", color: "white"}}>Enjoy Your Trip!</h1>
         <span style={{color: "white"}}>여행을 즐기세요!</span><br />
             
-        <SearchBar />
+        {/* <SearchBar /> */}
 
       </div>
       <Swiper

@@ -27,7 +27,7 @@ export default function Index() {
 
   useEffect(() => {
     axios.get('/main/get-hotel-city?name=튀빙겐')
-    .then(res => {set튀빙겐(res.data); console.log(res.data)})
+    .then(res => {set튀빙겐(res.data); console.log("튀빙겐", res.data)})
     .catch(e => console.error(e))
 
     axios.get('/main/get-hotel-city?name=크베들린부르크')
@@ -59,7 +59,7 @@ export default function Index() {
     
       <Ad images={['/img/ad1.png', '/img/ad2.png']} />
     
-      <Location title={"TYPE4"} sub={"---"} data={[1, 2, 3, 4, 5, 6]} />
+      <Location title={"평점순"} sub={"---"} data={[1, 2, 3, 4, 5, 6]} />
     
       <Recommend id={1} data={튀빙겐} title={"튀빙겐"} sub={""} />
     

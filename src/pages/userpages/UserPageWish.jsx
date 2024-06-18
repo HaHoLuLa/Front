@@ -1,7 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../../styles/UserPageWish.css"
+import { useEffect } from "react";
+import axios from "axios";
 
 function UserPageWish() {
+    const { num } = useParams()
+
+    useEffect(() => {
+        axios.get(`/my-page/wish-list`)
+        .then(res => console.log(res.data))
+        .catch(e => console.error(e))
+    }, [])
+
     return (
         <main>
             <p class="UserPageName">마이페이지</p>
@@ -16,9 +26,9 @@ function UserPageWish() {
                     </div>
 
                     <div class="UserPageNev">
-                        <Link>계정</Link>
-                        <Link>예약내역</Link>
-                        <Link class="UserPageNow">위시리스트</Link>
+                        <Link to={`/mypage/${num}`}>계정</Link>
+                        <Link to={`/mypage/${num}/buy`}>예약내역</Link>
+                        <Link to={`/mypage/${num}/wish`} class="UserPageNow">위시리스트</Link>
                         <Link>최근 본</Link>
                     </div>
                 </div>

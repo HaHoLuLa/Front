@@ -7,7 +7,7 @@ export const SearchNation = () => {
   return (
     <main>
       <SearchNationImage />
-      <Recommend id={1} data={[1, 1, 1, 1,1, 1,1,1]} title={"TYPE5"} sub={"type5"}  />
+      <Recommend id={1} data={[]} title={"TYPE5"} sub={"type5"}  />
     </main>
   )
 }

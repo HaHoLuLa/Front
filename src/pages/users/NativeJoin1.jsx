@@ -14,6 +14,7 @@ export default function NativeJoin1() {
         account: "",
         accountNum: ""
     })
+    const [ file, setFile ] = useState(null)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -27,8 +28,24 @@ export default function NativeJoin1() {
         console.log(form)
     }, [form])
 
+    useEffect(() => {
+        console.log(file)
+    }, [file])
+    
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0])
+    }
+
     const handleSubmit = async () => {
+        const formData = new FormData();
+        formData.append("files[]", file)
+
         await axios.post(`/login/join`, form).then(res => console.log(res.data)).catch(e => console.error(e))
+        await axios.post(`/login/upload-img`, formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            }
+        }).then(res => console.log(res.data)).catch(e => console.error(e))
         nav("/")
     }
 
@@ -40,7 +57,9 @@ export default function NativeJoin1() {
                 <h2>현지인 프로필 사진</h2>
                 <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
                     <div className="native1-image-circle" />
-                    <button className="native1-check-btn">프로필 이미지 업로드</button>
+                    {/* <button className="native1-check-btn">프로필 이미지 업로드</button> */}
+                    <label htmlFor="profile" className="native1-check-btn" style={{textAlign: "center", lineHeight: "50px"}}>프로필 이미지 업로드</label>
+                    <input type="file" id="profile" style={{display: "none"}} accept="image/png, image/jpeg" onChange={handleFileChange}/>
                 </div>
                 <h2>현지인 이름</h2>
                 <div style={{ display: "flex", justifyContent: "center" }}>

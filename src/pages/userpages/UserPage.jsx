@@ -28,7 +28,7 @@ function UserPage() {
                     <div class="UserPageNev">
                         <Link className="UserPageNow">계정</Link>
                         <Link to={`/mypage/${num}/buy`}>예약내역</Link>
-                        <Link>위시리스트</Link>
+                        <Link to={`/mypage/${num}/wish`}>위시리스트</Link>
                         <Link>최근 본</Link>
                     </div>
                 </div>

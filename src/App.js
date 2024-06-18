@@ -38,6 +38,8 @@ import SearchNative from "./pages/search/SearchNative"
 import Chat2 from "./pages/chats/Chat"
 import NativeDesc from "./pages/native/NativeDesc"
 import ChatDum from "./pages/chats/Chat2"
+import ChatTest from "./pages/chats/ChatTest"
+import EventPage from "./pages/events/EventPage"
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -101,6 +103,7 @@ export default function App() {
         <Route path="/upload-more" element={<UploadForm />} />
         {/* 이벤트 상세 */}
         <Route path="/event" element={<Event />} />
+        <Route path="/event/:num" element={<EventPage />} />
         {/* 예약하기 */}
         <Route path="/order" element={<Reservation />} />
         {/* 현지인 소개 */}
@@ -122,11 +125,12 @@ export default function App() {
         <Route path="타이머" element={<TimerKo />} />
         <Route path="place" element={<Place />} />
         <Route path="dum" element={<ChatDum />} />
+        <Route path="chatt" element={<ChatTest />} />
       </Route>
       {/* 본인인증 */}
       <Route path="/identify" element={<Identify />} />
       {/* 리뷰 */}
-      <Route path="/review" element={<WriteReview />} />
+      <Route path="/review/:hnum" element={<WriteReview />} />
       {/* 404시 메인으로 */}
       <Route path="*" element={<Redirect />} />
     </Routes>

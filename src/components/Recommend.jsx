@@ -2,6 +2,28 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation } from "swiper/modules"
 import { useNavigate } from "react-router-dom"
 
+export const StarRating = ({ rating }) => {
+  // rating은 0에서 5 사이의 숫자
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 !== 0;
+  const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+  return (
+    <>
+      {/* 채워진 별 출력 */}
+      {Array(fullStars).fill().map((_, index) => (
+        <i className="fa-solid fa-star" key={`full-${index}`}></i>
+      ))}
+      {/* 반쯤 채워진 별 출력 */}
+      {halfStar && <i className="fa-solid fa-star-half"></i>}
+      {/* 빈 별 출력 */}
+      {Array(emptyStars).fill().map((_, index) => (
+        <i className="fa-regular fa-star" key={`empty-${index}`}></i>
+      ))}
+    </>
+  );
+};
+
 export default function Recommend({style, data, id, title, sub}) {
   const nav = useNavigate();
 
@@ -34,8 +56,8 @@ export default function Recommend({style, data, id, title, sub}) {
               </div>
   
               <div>
-                <span><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-regular fa-star"></i> {i.hrate}</span>
-                <span>가격 {i.rCost?.toLocaleString()}원 / {i.rPeople}명</span>
+                <span><StarRating rating={i.hrate} /> {Math.round(i.hrate * 10) / 10}</span>
+                <span>원가 {i.rprice?.toLocaleString()}원~</span>
               </div>
             </div>
           </div>

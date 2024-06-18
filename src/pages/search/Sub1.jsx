@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import "../../styles/sub1.css"
 import { useEffect, useState } from "react"
 import { GoogleMap, LoadScript, 
@@ -6,9 +6,29 @@ import { GoogleMap, LoadScript,
  } from "@react-google-maps/api"
 import axios from "axios"
 // import { useGetData } from "../../utils/useData"
+import { StarRating } from "../../components/Recommend"
 
-const MapPopup = ({act, setAct, count}) => {
+const MapPopup = ({act, setAct, count, data}) => {
+  const myStyles = [
+    {
+      featureType: "poi",
+      elementType: "labels",
+      stylers: [{ visibility: "off" }],
+    },
+    {
+      featureType: "landscape",
+      elementType: "labels",
+      stylers: [{ visibility: "off" }],
+    },
+    {
+      featureType: "road",
+      elementType: "labels",
+      stylers: [{ visibility: "off" }],
+    },
+  ];
+
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const nav = useNavigate();
 
   const handleSetMarker = (marker) => {
     setSelectedMarker(marker);
@@ -43,40 +63,34 @@ const MapPopup = ({act, setAct, count}) => {
             <h2 style={{marginTop: "0"}}>예약 가능 숙소 {count}개</h2>
             <div className="list-wrapper">
               
+              {data.map((item, index) => (
+
               <div className="list-object">
-                <div className="image" style={{backgroundImage: `url(${'https://albergoetruria.it/volterra/wp-content/uploads/2023/05/albergo-etruria-terrazza-cover.jpg'})`}} />
-                <div className="description">
-                  <h3>호텔</h3>
+                <div className="image" style={{backgroundImage: `url(${item.hpUrl})`}} />
+                <div className="description" onClick={() => nav(`/room/${item.hnum}`)}>
+                  <h4>{item.hname}</h4>
                   
-                  
-                  <span>가격</span>
+                  <span>
+
+                  <StarRating rating={item.hrate} />
+                  </span>
+                  {/* <span>{item.price}</span> */}
                 </div>
               </div>
+              ))}
               
             </div>
           </div>
           <div style={{flex: "1", paddingRight: "30px"}}>
           <LoadScript googleMapsApiKey={`${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}>
-            <GoogleMap mapContainerStyle={{width: "100%", height: "83vh"}} center={{lat: 37, lng: 127}} zoom={15} options={{ disableDefaultUI: false }}>
-            {[
-            {
-              name: "₩ 100,000",
-              position: {
-                lat: 37,
-                lng: 127,
-              },
-            },
-            { name: "₩ 200,000", position: { lat: 38, lng: 128 } },
-            { name: "₩ 300,000", position: { lat: 37, lng: 128 } },
-            { name: "₩ 400,000", position: { lat: 38, lng: 127 } },
-            {
-              name: "고덕 아남아파트",
-              position: { lat: 37.5578508, lng: 127.1459139 },
-            },
-          ].map((item, index) => (
+            <GoogleMap mapContainerStyle={{width: "100%", height: "83vh"}} center={{lat: data[0]?.lat, lng: data[0]?.lng}} zoom={15} options={{ disableDefaultUI: true, styles: myStyles }}>
+            {data.map((item, index) => (
             <MarkerF
               key={index}
-              position={item.position}
+              position={{
+                lat: item.lat,
+                lng: item.lng
+              }}
               title={item.name}
               label={{
                 color: "white",
@@ -87,15 +101,16 @@ const MapPopup = ({act, setAct, count}) => {
           ))}
           {selectedMarker && (
             <InfoWindowF
-              position={selectedMarker.position}
+              position={{lat: selectedMarker.lat, lng: selectedMarker.lng}}
               onCloseClick={handleInfoWindowClose}
               options={{
                 pixelOffset: new window.google.maps.Size(0, -30),
               }}
             >
               <div>
-                <h1 style={{ margin: "0" }}>특가</h1>
-                {selectedMarker.name}
+                <h3 style={{ margin: "0" }} onClick={() => nav(`/room/${selectedMarker.hnum}`)}>
+                  {selectedMarker.hname}
+                </h3>
               </div>
             </InfoWindowF>
           )}
@@ -113,6 +128,7 @@ export const Sub1 = () => {
   const [ act, setAct ] = useState(false);
   // const data = useGetData("/search/city-hotels?city=튀빙겐")
   const [ data, setData ] = useState([])
+  const nav = useNavigate()
 
   useEffect(() => {
     axios.get(`/search/city-hotels?city=${locate}`)
@@ -125,7 +141,7 @@ export const Sub1 = () => {
 
   return (
     <>
-    <MapPopup act={act} setAct={setAct} count={data.length} />
+    <MapPopup act={act} setAct={setAct} count={data.length} data={data} />
     <main>
     <h2>'{locate}' 검색 결과</h2>
     <div className="main">
@@ -173,7 +189,7 @@ export const Sub1 = () => {
 
         {data?.map((item, index) => (
           
-          <div className="result-obj" key={index}>
+          <div className="result-obj" key={index} onClick={() => nav(`/room/${item.hnum}`)}>
             <div style={{backgroundImage: `url('${item.hpUrl}')`}}>
               <div>
                 <i className="fa-regular fa-heart fa-xl"></i>
@@ -181,8 +197,8 @@ export const Sub1 = () => {
             </div>
             <div>
               <p><b>{item.hname}</b></p>
-              <p><i className="fa-solid fa-star"></i> {item.hrate} ({item?.rcount})</p>
-              <p><b></b>원</p>
+              <p><i className="fa-solid fa-star"></i> {Math.round(item.hrate * 10) / 10}</p>
+              {/* <p><b></b>원</p> */}
             </div>
           </div>
         ))}

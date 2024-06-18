@@ -1,9 +1,25 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/writeReview.css";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export default function WriteReview() {
     const [star, setStar] = useState(0);
     const [reviewText, setReviewText] = useState("");
+    // const [hname, setHName] = useState("")
+    // const [rname, setRName] = useState("")
+    const [data, setData ] = useState({
+        hname: "",
+        rname: "",
+        hurl: ""
+    })
+
+    const { hnum } = useParams()
+
+    // const [ form, setForm ] = useState({
+    //     rate: 0,
+    //     content: ""
+    // })
 
     const handleRating = (value) => {
         if (star !== value) {
@@ -16,34 +32,68 @@ export default function WriteReview() {
         setReviewText(event.target.value);
     };
 
-    const handleSubmitReview = () => {
+    const handleSubmitReview = async (e) => {
+        e.preventDefault()
         // 리뷰를 등록하는 로직을 추가할 수 있습니다.
-        console.log("리뷰 내용:", reviewText);
+        await axios.post(`/my-page/write-review?hNum=${hnum}`, { rate: star, content: reviewText}).then(res => console.log(res.data)).catch(e => console.error(e))
+        window.close()
     };
+
+    useEffect(() => {
+        const handleMessage = (e) => {
+            if (e.origin === window.location.origin) {
+                const { hname, rname, hurl } = e.data
+                console.log("받기 : ", hname, rname)
+                if (hname !== undefined) {
+
+                    setData({
+                        hname: hname,
+                        rname: rname,
+                        hurl: hurl
+                    })
+                }
+            }
+        };
+
+        window.addEventListener('message', handleMessage);
+
+
+        return () => {
+            window.removeEventListener('message', handleMessage);
+        };
+    }, []);
+
+    // useEffect(() => {
+    //     console.log("출력 : ", hname, rname)
+    // }, [ hname, rname ])
 
     useEffect(() => {
         console.log("실시간으로 작성 중인 리뷰 내용:", reviewText);
     }, [reviewText]);
 
+
     return (
         <form className="write-review">
+            <input type="hidden" name="" id="hotel" />
+            <input type="hidden" name="" id="room" />
+
             <p className="write-review-title">리뷰쓰기</p>
             <hr style={{width: "99%"}} />
             <div className="write-review-header">
                 <img
                     className="review-item-image"
-                    src="https://i.travelapi.com/lodging/1000000/490000/481300/481277/3d487938_z.jpg"
+                    src={data.hurl}
                     alt="Review item"
                 />
                 <div className="write-review-text">
-                    <div className="review-info" style={{ color: "GrayText" }}>
+                    {/* <div className="review-info" style={{ color: "GrayText" }}>
                         {"판매자 이름"}
-                    </div>
+                    </div> */}
                     <div className="review-info">
-                        {"지역/호텔이름"}
+                        {data.hname}
                     </div>
                     <div className="review-info" style={{ color: "GrayText" }}>
-                        {"객실 정보(스위트룸, 일반, 등)"}
+                        {data.rname}
                     </div>
                 </div>
             </div>

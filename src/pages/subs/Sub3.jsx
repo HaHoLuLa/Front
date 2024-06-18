@@ -3,8 +3,9 @@ import Recommend from "../../components/Recommend"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { Link, useParams } from "react-router-dom"
+import { StarRating } from "../../components/Recommend"
 
-const RoomInfo = ({data}) => {
+const RoomInfo = ({data, hname}) => {
   return (
     data?.length !== 0 ?
 
@@ -14,14 +15,14 @@ const RoomInfo = ({data}) => {
       <div>
         <h2>{data?.rcost?.toLocaleString()}원</h2>
         <span>{data?.rcapacity}인실</span>
-        <span>조리기구 有</span>
-        <span>내부 화장실 2개</span>
-        <span>방 3개</span>
+        <span>{data?.paFacility}</span>
+        {/* <span>내부 화장실 2개</span>
+        <span>방 3개</span> */}
       </div>
     </div>
     :
     <div>
-      <h1>방을 선택하세요</h1>
+      <h1>{hname}</h1>
     </div>
   )
 }
@@ -44,7 +45,7 @@ export const Sub3 = () => {
     })
     .catch(e => console.error(e))
 
-    axios.get(`/detail/hotel-review?hNum=${num}`)
+    axios.get(`/detail/hotel-review1?hNum=${num}`)
     .then(res => {
       setReview(res.data)
       console.log(res.data)
@@ -84,11 +85,13 @@ export const Sub3 = () => {
 
   return (
   <main>
-    <div className="room-info">
+    <div className="room-info" style={{marginTop: "50px"}}>
       <div>
         <div>
           <div
             style={{backgroundImage: `url('http://localhost:8080/${encodeURIComponent(main?.pic).replace(".%5Cuploads%5C", "uploads/")}')`}}>
+              
+                <i className="fa-regular fa-heart" style={{fontSize: "40px" }}></i>
           </div>
           <div>
             {roomPic.map((item, index) => (
@@ -108,7 +111,7 @@ export const Sub3 = () => {
       </div>
       <div>
         
-      <RoomInfo data={roomData}/>
+      <RoomInfo data={roomData} hname={data[0]?.hname}/>
         <div>
           <select onChange={handleChange}>
             <option value={""} >방을 선택하세요</option>
@@ -133,12 +136,15 @@ export const Sub3 = () => {
     <div className="detail-info">
       <div>
         <h2>객실 설명</h2>
-        <div dangerouslySetInnerHTML={{ __html: roomData?.paContent }}>
+        <div dangerouslySetInnerHTML={{ __html: roomData?.paContent }} style={{marginBottom: "20px"}}>
         {/* {data.paContent} */}
         </div>
         <div>
+          {
+            roomData.length !== 0 && 
+            <>
           <div
-            style={{backgroundImage: `url('${native.npProfile}')`}}>
+            style={{backgroundImage: `url('http://localhost:8080/${encodeURIComponent(native?.npProfile).replace(".%5Cuploads%5C", "uploads/")}')`}}>
           </div>
           <div>
             <p>{native.npName}</p>
@@ -147,6 +153,8 @@ export const Sub3 = () => {
               <button >채팅하기</button>
             </Link>
           </div>
+            </>
+          }
         </div>
       </div>
       <div>
@@ -156,7 +164,7 @@ export const Sub3 = () => {
             review.map((item, index) => (
           <div key={index}>
             <p><span>{item.name}</span><span>{item.resDate} | {item.reviewDate}</span></p>
-            <p><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-regular fa-star"></i></p>
+            <p><StarRating rating={item.rate} /></p>
             <p>{item.content}</p>
           </div>
 

@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import "../../styles/reservation.css"
 import ResInfoModal from  "./ResInfoModal"
 import ResInfoModal1 from "./ResInfoModal1"
@@ -14,6 +14,7 @@ function Reservation() {
     const [act3, setAct3] = useState(false);
     const { state } = useLocation();
     const [ data, setData ] = useState({})
+    const nav = useNavigate()
 
     const hNum = state?.hNum
     const paNum = state?.paNum
@@ -27,7 +28,8 @@ function Reservation() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         await axios.post(`/detail/reservation?paNum=${paNum}`).then(console.log).catch(e => console.error(e))
-    }
+        nav("/")  
+    } 
 
     return (
         <>

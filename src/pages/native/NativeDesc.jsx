@@ -72,7 +72,7 @@ function NativeDesc() {
                     </div>
 
                     <div className="NDFormDesc">
-                        <p className="NDFormDescLoc">{data[0].location}</p>
+                        <p className="NDFormDescLoc">{data[0]?.location}</p>
                         <p className="NDFormDescName">{item.hname}</p>
                         <p className="NDFormDescName">{item.rname}</p>
                         <div className="NDFormDescBotCon">
@@ -90,7 +90,7 @@ function NativeDesc() {
 
             </div>
 
-            <div className="NDFormList">
+            {/* <div className="NDFormList">
                 <div className="NDFormTopCon">
                     <p className="NDFormListName">후기</p>
                     <p className="NDFormListNum">123</p>
@@ -112,10 +112,10 @@ function NativeDesc() {
                     <p className="NDreviewSco">★★★✩✩</p>
                     <p className="NDreviewDate">2024-04-29</p>
                     <p className="NDreviewTxt">왜 되는거임 왜 되는거임 왜 되는거임 왜 되는거임왜 되는거임왜 되는거임왜 되는거임</p>
-                </div>
+                </div> */}
 
-                <button className="NDreview">⌵ 후기 더보기</button>
-            </div>
+                {/* <button className="NDreview">⌵ 후기 더보기</button> */}
+            {/* </div> */}
         </main>
     )
 }
