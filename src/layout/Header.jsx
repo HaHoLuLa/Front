@@ -82,8 +82,8 @@ export default function Header() {
               <></>
               :
               <>
-                { user?.name ? <>
-                <span style={{marginRight: "10px"}}><i className="fa-solid fa-comments"></i>&nbsp;채팅</span>
+                { user?.name ? <> { user?.native !== "1" ? <></> :
+                <span onClick={() => nav("/chats")} style={{marginRight: "10px"}}><i className="fa-solid fa-comments"></i>&nbsp;채팅</span>}
                 <span onClick={handleLogout}>{user.name} 님</span>
                 { user?.native !== "1" ? (pathname !== "/mypage/*" && <Link to={`/mypage/${user.id}`}>
                 <button>마이페이지</button>

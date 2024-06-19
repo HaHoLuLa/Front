@@ -1,3 +1,5 @@
+import { StarRating } from "../../../components/Recommend"
+
 export default function Location({title, sub, data}) {
   return (
     <div className="location">
@@ -13,10 +15,13 @@ export default function Location({title, sub, data}) {
 
           
           <div className="location-object" key={index}>
-          <div style={{backgroundImage: "url('https://img.freepik.com/free-photo/forest-landscape_71767-127.jpg')"}}></div>
+          <div style={{backgroundImage: `url('${item.hurl}')`}}></div>
           <div>
-            <h3>서울{item}</h3>
-            <span>숙소 2,652개</span>
+            <h3>{item?.hname}</h3>
+            <span>
+
+            <StarRating rating={item?.rate} />&nbsp;{item?.rate}
+            </span>
           </div>
         </div>
         ))}

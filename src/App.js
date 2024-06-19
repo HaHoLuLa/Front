@@ -40,6 +40,7 @@ import NativeDesc from "./pages/native/NativeDesc"
 import ChatDum from "./pages/chats/Chat2"
 import ChatTest from "./pages/chats/ChatTest"
 import EventPage from "./pages/events/EventPage"
+import { Chat as NChat } from "./pages/chats/NativeChats"
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -108,6 +109,8 @@ export default function App() {
         <Route path="/order" element={<Reservation />} />
         {/* 현지인 소개 */}
         <Route path="/native-desc" element={<NativeDesc />} />
+        {/* 채팅방 */}
+        <Route path="/chats" element={<NChat />} />
       </Route>
       {/* 채팅 */}
       <Route path="/chat" element={<Chat2 />} />

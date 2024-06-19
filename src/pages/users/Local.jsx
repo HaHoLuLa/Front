@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../../styles/localManage.css";
-import { NavLink, Routes, Route } from 'react-router-dom'; // BrowserRouter, Routes, Route,
+import { NavLink, Routes, Route, useNavigate } from 'react-router-dom'; // BrowserRouter, Routes, Route,
 import axios from "axios";
 
 function SubMenu({ menu }) {
@@ -40,6 +40,7 @@ function Nav() {
 }
 
 function LocalManage() {
+  const nav = useNavigate()
   const [ data, setData ] = useState([])
   useEffect(() => {
     axios.post('/native/register-room')
@@ -51,7 +52,7 @@ function LocalManage() {
     <div className="content">
       <h2>숙소 폼 관리</h2>
       <div className="hotel-list">
-        <div className="add-hotel">
+        <div className="add-hotel" onClick={() => nav("/upload")}>
           <div></div>
           <span>새 숙소 등록하기</span>
         </div>

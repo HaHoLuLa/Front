@@ -24,6 +24,7 @@ export default function Index() {
   const [ 최저가, set최저가 ] = useState([]);
   const [ 데이터1, set데이터1 ] = useState([])
   const [ 데이터2, set데이터2 ] = useState([])
+  const [ 평점순, set평점순 ] = useState([])
 
   useEffect(() => {
     axios.get('/main/get-hotel-city?name=튀빙겐')
@@ -38,12 +39,16 @@ export default function Index() {
     .then(res => {set최저가(res.data); console.log(res.data)})
     .catch(e => console.error(e))
 
-    axios.post('/main/native-page-name?name=우진')
+    axios.post('/main/native-page-name?name=Sofia')
     .then(res => {set데이터1(res.data); console.log("jin",res.data)})
     .catch(e => console.error(e))
 
-    axios.post('/main/native-page-name?name=김승민')
+    axios.post('/main/native-page-name?name=Johannes')
     .then(res => {set데이터2(res.data); console.log("rla",res.data)})
+    .catch(e => console.error(e))
+
+    axios.post(`/main/high-rate-hotel`)
+    .then(res => set평점순(res.data))
     .catch(e => console.error(e))
 
 
@@ -55,11 +60,11 @@ export default function Index() {
     
       <EventMenu title={"🎉여간행장 최저가 보장!🎉"} sub={"type1"} data={최저가} />    
     
-      <EventCart menu1={"우진님의 최저가 상품"} menu2={"승민님의 최저가 상품"} item1={데이터1.slice(0, 4)} item2={데이터2} title1={"하하호호"} title2={"룰루랄라"} sub1={"type2"} sub2={"type3"} />
+      <EventCart menu1={"Sofia 님의 최저가 상품"} menu2={"Johannes 님의 최저가 상품"} item1={데이터1.slice(0, 4)} item2={데이터2} title1={"하하호호"} title2={"룰루랄라"} sub1={"type2"} sub2={"type3"} />
     
       <Ad images={['/img/ad1.png', '/img/ad2.png']} />
     
-      <Location title={"평점순"} sub={"---"} data={[1, 2, 3, 4, 5, 6]} />
+      <Location title={"평점순"} sub={""} data={평점순} />
     
       <Recommend id={1} data={튀빙겐} title={"튀빙겐"} sub={""} />
     

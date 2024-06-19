@@ -56,3 +56,7 @@
   background: none;
   /*스크롤바 뒷 배경 색상*/
 }
+
+.chatInput:focus {
+  outline: none;
+}
