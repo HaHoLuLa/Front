@@ -26,6 +26,8 @@ export const StarRating = ({ rating }) => {
 
 export default function Recommend({style, data, id, title, sub}) {
   const nav = useNavigate();
+  const slidesToShow = data.length < 4 ? data.length : 4;
+  const slidesPerGroup = data.length < 4 ? data.length : 4;
 
   return (
     <div className="recommend" style={style}>
@@ -36,8 +38,8 @@ export default function Recommend({style, data, id, title, sub}) {
         <button id={`next${id}`} style={{right: "-25px"}}><i className="fa-solid fa-chevron-left fa-rotate-180"></i></button>
         <Swiper
           modules={[ Navigation ]}
-          slidesPerView={4}
-          slidesPerGroup={4}
+          slidesPerView={slidesToShow}
+          slidesPerGroup={slidesPerGroup}
           spaceBetween={25}
           navigation={{prevEl: `#prev${id}`, nextEl: `#next${id}`}}
         >

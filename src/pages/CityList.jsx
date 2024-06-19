@@ -19,7 +19,9 @@ function CityList() {
       <div className="city-menu" key={index} style={{backgroundImage: `url('${item.pic}')`, marginBottom: '20px'}}>
         <h1>{item.name}</h1>
         <span>{item.info}</span>
-        <button onClick={() => nav(`/search/${item.name}`)}>숙소 보러가기 &gt;</button>
+        <span>
+          <button onClick={() => nav(`/search/${item.name}`)}>숙소 보러가기 <i className="fa-solid fa-caret-right"></i></button>
+        </span>
       </div>
     ))}
   </main>

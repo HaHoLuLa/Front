@@ -3,6 +3,10 @@
 /* .은 class #은 id 여기에선 안 씀 >는 자식 지정 */
 /* :first-child 첫째 자식 지정 :not(:first-child) 첫째 자식이 아닌 모든 것을 지정 */
 
+.recommend-object, .recommend-container .swiper-slide {
+  max-width: 282px;
+}
+
 .image-menu {
   width: 100%;
   background-size: cover;

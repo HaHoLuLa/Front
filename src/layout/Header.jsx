@@ -83,6 +83,7 @@ export default function Header() {
               :
               <>
                 { user?.name ? <>
+                <span style={{marginRight: "10px"}}><i className="fa-solid fa-comments"></i>&nbsp;채팅</span>
                 <span onClick={handleLogout}>{user.name} 님</span>
                 { user?.native !== "1" ? (pathname !== "/mypage/*" && <Link to={`/mypage/${user.id}`}>
                 <button>마이페이지</button>
@@ -104,7 +105,7 @@ export default function Header() {
         <div className="header-nav">
           {/* <span><i className="fa-solid fa-plane-departure"></i>&nbsp; 메뉴1</span> */}
           <span onClick={() => nav("/citys")}><i className="fa-solid fa-hotel"></i>&nbsp;도시들</span>
-          <span onClick={() => nav("/search/native")}><i className="fa-solid fa-comments"></i>&nbsp;현지인</span>
+          <span onClick={() => nav("/search/native")}><i className="fa-solid fa-person"></i>&nbsp;현지인</span>
           <span onClick={() => nav("/event")}><i className="fa-solid fa-gift"></i>&nbsp;이벤트</span>
           {/* <span><i className="fa-solid fa-box"></i>&nbsp;메뉴 5</span> */}
           {/* <span>더보기&nbsp;<i className="fa-solid fa-caret-down"></i></span> */}

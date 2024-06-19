@@ -131,7 +131,7 @@
 .result-container {
   margin-top: 50px; 
   display: flex; 
-  justify-content: space-between; 
+  justify-content: flex-start; 
   flex-wrap: wrap;
 }
 
@@ -141,6 +141,11 @@
   margin-bottom: 20px; 
   display: flex; 
   flex-direction: column;
+  margin-right: 16px;
+}
+
+.result-obj:nth-child(3n) {
+  margin-right: 0;
 }
 
 .result-obj > div:first-child {

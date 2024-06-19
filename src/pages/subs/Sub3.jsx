@@ -60,7 +60,7 @@ export const Sub3 = () => {
     .then(res => { setSimiHotel(res.data); console.log("test",res.data)})
     .catch(e => console.error(e))
 
-    
+    setRoomData([])
   }, [num])
 
   const handleChange = (e) => {

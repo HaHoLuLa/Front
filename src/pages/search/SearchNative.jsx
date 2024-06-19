@@ -54,9 +54,12 @@ function SearchNative() {
                             <p className="SNNlocation">활동 지역 - {item?.location}</p>
                             <p className="SNNdesc">{item?.intro}</p>
                         </div>
+                        <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-end", height: "100%"}}>
+
                         <Link to={"/native-desc"} state={{num: item?.num}}>
                             <button className="SNNbutton">더 알아보기</button>
                         </Link>
+                        </div>
                     </div>
                 </div>
                 ))

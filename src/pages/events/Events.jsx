@@ -10,7 +10,6 @@ function Events() {
         <div class="opacityBox"></div>
         <div class="bennerTextCon">
           <p class="bennerTextT">EVENT</p>
-          <p class="bennerTextB">여간행장이 준비한 다양한 이벤트를 확인하고, 참가해보세요!</p> {/* 여기 글자 너무 구림 혼자 독보적 블랙이라 그런것 같은데 어떻게 바꿔야될지 모르겠음 색 바꾸면 너무 흐리게 보임 그렇다고 색 바꾸고 굵기를 늘리자니 다채롭게 구림 역시 디자인을 전공했어야*/}
         </div>
       </div>
 
