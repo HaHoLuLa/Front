@@ -1,5 +1,4 @@
 import "../../styles/event.css"
-import EventChoose from "./EventChoose"
 
 function EventPage() {
   return (
@@ -11,7 +10,7 @@ function EventPage() {
         </div>
 
         <div className="이벤트페이지중앙">
-            <img src="https://dry7pvlp22cox.cloudfront.net/mrt-images-prod/2024/05/31/x0kF/utoVjl5kkA.jpg?width=3180&quality=70"/>
+            <img src="https://dry7pvlp22cox.cloudfront.net/mrt-images-prod/2024/05/31/x0kF/utoVjl5kkA.jpg?width=3180&quality=70" alt=""/>
         </div>
 
         <div className="이벤트페이지하단">

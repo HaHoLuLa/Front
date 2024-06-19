@@ -16,8 +16,10 @@ export default function Location({title, sub, data}) {
           
           <div className="location-object" key={index}>
           <div style={{backgroundImage: `url('${item.hurl}')`}}></div>
-          <div>
-            <h3>{item?.hname}</h3>
+          <div style={{}}>
+            <h3 style={{whiteSpace: "nowrap",
+        overflow: "hidden",
+        textOverflow: "ellipsis",}}>{item?.hname}</h3>
             <span>
 
             <StarRating rating={item?.rate} />&nbsp;{item?.rate}

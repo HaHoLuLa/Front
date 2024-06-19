@@ -196,7 +196,9 @@ export const Sub1 = () => {
               </div>
             </div>
             <div>
-              <p><b>{item.hname}</b></p>
+              <p><h3 style={{marginTop: "0", whiteSpace: "nowrap",
+        overflow: "hidden",
+        textOverflow: "ellipsis",}}>{item.hname}</h3></p>
               <p><i className="fa-solid fa-star"></i> {Math.round(item.hrate * 10) / 10}</p>
               {/* <p><b></b>원</p> */}
             </div>

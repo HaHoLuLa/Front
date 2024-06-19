@@ -60,7 +60,7 @@ function LocalManage() {
           <div className="hotel" key={index} style={{backgroundImage: `url('${item.hurl}')` }}>
             <div></div>
             <h4>{item.hname}</h4>
-            <h5>{"방이름"}</h5>
+            {/* <h5>{"방이름"}</h5> */}
             <h5>{item.paDate}</h5>
             <h5>{item.rcost}</h5>
           </div>

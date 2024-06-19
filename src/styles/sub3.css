@@ -88,7 +88,7 @@
 }
 
 .detail-info > div:first-child {
-  width: 54%;
+  width: 64%;
 }
 
 .detail-info > div:first-child > div:nth-child(3) {
@@ -107,7 +107,7 @@
 }
 
 .detail-info > div:not(:first-child) {
-  width: 44%;
+  width: 34%;
 }
 
 .detail-info > div:not(:first-child) > div > div {

@@ -57,7 +57,7 @@ function SearchNative() {
                         <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-end", height: "100%"}}>
 
                         <Link to={"/native-desc"} state={{num: item?.num}}>
-                            <button className="SNNbutton">더 알아보기</button>
+                            <button className="SNNbutton">더 알아보기&nbsp;<i className="fa-solid fa-caret-right"></i></button>
                         </Link>
                         </div>
                     </div>

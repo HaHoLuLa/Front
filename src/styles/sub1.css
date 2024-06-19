@@ -96,6 +96,11 @@
 
 .local-cart > p {
   margin-left: 16px;
+  padding: 10px 0;
+}
+
+.local-cart > p > input {
+  margin-right: 8px;
 }
 
 .local-opt {
@@ -110,6 +115,10 @@
 .local-opt > div {
   display: flex;
   justify-content: space-between;
+}
+
+.local-opt > div > i {
+  margin-right: 5px;
 }
 
 .right-menu {
@@ -164,7 +173,7 @@
 }
 
 .result-obj > div:not(:first-child) {
-  padding: 10px; 
+  padding: 7px;
   box-sizing: border-box;
 }
 

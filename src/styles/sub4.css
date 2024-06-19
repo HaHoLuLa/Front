@@ -43,7 +43,8 @@
   border-radius: 5px;
   border: none;
   background-color: transparent;
-  font-size: 18px;
+  font-size: 23px;
+  font-weight: 500;
   transition: all ease-in-out 0.2s;
 }
 

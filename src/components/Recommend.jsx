@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation } from "swiper/modules"
 import { useNavigate } from "react-router-dom"
+import { useEffect } from "react";
 
 export const StarRating = ({ rating }) => {
   // rating은 0에서 5 사이의 숫자
@@ -15,7 +16,7 @@ export const StarRating = ({ rating }) => {
         <i className="fa-solid fa-star" key={`full-${index}`}></i>
       ))}
       {/* 반쯤 채워진 별 출력 */}
-      {halfStar && <i className="fa-solid fa-star-half"></i>}
+      {halfStar && <i class="fa-regular fa-star-half-stroke"></i>}
       {/* 빈 별 출력 */}
       {Array(emptyStars).fill().map((_, index) => (
         <i className="fa-regular fa-star" key={`empty-${index}`}></i>
@@ -28,6 +29,12 @@ export default function Recommend({style, data, id, title, sub}) {
   const nav = useNavigate();
   const slidesToShow = data.length < 4 ? data.length : 4;
   const slidesPerGroup = data.length < 4 ? data.length : 4;
+
+  useEffect(() => {
+    if (slidesToShow < 4) {
+      document.querySelector('.swiper').style.marginLeft = 0;
+    }
+  }, [slidesToShow])
 
   return (
     <div className="recommend" style={style}>

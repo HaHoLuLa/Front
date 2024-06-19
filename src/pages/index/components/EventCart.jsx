@@ -17,9 +17,13 @@ export default function EventCart({menu1, menu2, item1, item2, title1, title2, s
 
   const disableStyle = {
     cursor: "pointer",
-    color: "#ccc",
+    color: "#AAAAAA",
     width: "50%",
+    borderTop: "#ccc solid 1px",
     borderBottom: "#ccc solid 1px",
+    borderRight: "#ccc solid 1px",
+    borderLeft: "#ccc solid 1px",
+    backgroundColor: "#f5f6f8",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -44,7 +48,7 @@ export default function EventCart({menu1, menu2, item1, item2, title1, title2, s
         <div className="cart-object" key={index} onClick={() => nav(`/room/${item.hnum}`)}>
         <div style={{backgroundImage: `url('http://localhost:8080/${encodeURIComponent(item?.paPicUrl).replace(".%5Cuploads%5C", "uploads/")}')`}}>
           {/* <div>{index + 1}</div> */}
-          <i className="fa-solid fa-bookmark" style={index === 0 ? {color: "gold"} : index === 1 ? {color: "silver"} : index === 2 ? {color: "#CD7F32"} : {}}><span style={{position: "absolute", left: "5px", color: "white", fontSize: "20px"}}>{index + 1}</span></i>
+          <i className="fa-solid fa-bookmark" style={index === 0 ? {color: "gold"} : index === 1 ? {color: "silver"} : index === 2 ? {color: "#CD7F32"} : {}}><span style={{position: "absolute", left: "6px", top: "3px", color: "white", fontSize: "17px"}}>{index + 1}</span></i>
           <div><span>{item.rname}</span></div>
         </div>
 
@@ -62,7 +66,7 @@ export default function EventCart({menu1, menu2, item1, item2, title1, title2, s
   <div className="cart-object" key={index} onClick={() => nav(`/room/${item.hnum}`)}>
         <div style={{backgroundImage: `url('http://localhost:8080/${encodeURIComponent(item?.paPicUrl).replace(".%5Cuploads%5C", "uploads/")}')`}}>
           {/* <div>{index + 1}</div> */}
-          <i className="fa-solid fa-bookmark" style={index === 0 ? {color: "gold"} : index === 1 ? {color: "silver"} : index === 2 ? {color: "#CD7F32"} : {}}><span style={{position: "absolute", left: "5px", color: "white", fontSize: "20px"}}>{index + 1}</span></i>
+          <i className="fa-solid fa-bookmark" style={index === 0 ? {color: "gold"} : index === 1 ? {color: "silver"} : index === 2 ? {color: "#CD7F32"} : {}}><span style={{position: "absolute", left: "6px", top: "3px", color: "white", fontSize: "17px"}}>{index + 1}</span></i>
           <div><span>{item.rname}</span></div>
         </div>
 

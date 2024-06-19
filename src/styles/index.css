@@ -224,6 +224,7 @@
 }
 
 .cart-object > div:first-child > i.fa-solid {
+  margin-left: 10px;
   font-size: 30px;
   position: relative;
 }
@@ -307,7 +308,7 @@
 .location-object {
   display: flex;
   flex-direction: column;
-  height: 250px;
+  height: 230px;
   width: 15.5%;
 }
 
@@ -344,7 +345,7 @@
 
 .recommend-object {
   /* width: 23.5%; */
-  height: 350px;
+  height: 300px;
   border: solid 1px #ccc;
   transition: ease-in-out transform 200ms, ease-in-out box-shadow 200ms;
   cursor: pointer;
@@ -357,13 +358,13 @@
 
 .recommend-object>div:first-child {
   width: auto;
-  height: 50%;
+  height: 60%;
   background-size: cover;
 }
 
 .recommend-object>div:not(:first-child) {
   width: auto;
-  height: 50%;
+  height: 40%;
   box-sizing: border-box;
   padding: 10px;
   display: flex;

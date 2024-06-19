@@ -85,13 +85,13 @@ export const Sub3 = () => {
 
   return (
   <main>
-    <div className="room-info" style={{marginTop: "50px"}}>
+    <div className="room-info" style={{marginTop: "25px"}}>
       <div>
         <div>
           <div
-            style={{backgroundImage: `url('http://localhost:8080/${encodeURIComponent(main?.pic).replace(".%5Cuploads%5C", "uploads/")}')`}}>
+            style={roomData.length === 0 ? {backgroundImage: "url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/f4/06/f4/swissotel-premier-room.jpg?w=700&h=-1&s=1')"} : {backgroundImage: `url('http://localhost:8080/${encodeURIComponent(main?.pic).replace(".%5Cuploads%5C", "uploads/")}')`}}>
               
-                <i className="fa-regular fa-heart" style={{fontSize: "40px" }}></i>
+                <i className="fa-regular fa-heart" style={{fontSize: "40px", color: "white" }}></i>
           </div>
           <div>
             {roomPic.map((item, index) => (

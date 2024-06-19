@@ -126,19 +126,19 @@ export default function Chat2() {
     <>
     <div style={{margin: "0 auto", width: "50%", height: "auto", display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
       <div>
-        <h1 style={{margin: "0"}}>{user.id}</h1>
+        <h1 style={{}}>{user.id}</h1>
         <div className='room' ref={scrollRef} style={{width: "auto", height: "700px", overflowY: "auto", marginBottom: "10px"}}>
           {messages.map((msg, index) => (
             user.native === msg.sender ? 
             <div key={index} style={{display: "flex", justifyContent: "flex-end", marginRight: "10px"}}><h2 style={{backgroundColor: "#5991d1", padding: "15px", borderRadius: "20px", maxWidth: "50%", wordWrap: "break-word", color: "white", fontWeight: "normal", borderBottomRightRadius: "0"}}>{msg.content}</h2></div> : 
-            <div key={index} style={{display: "flex", flexDirection: "column", alignItems: "flex-start", marginLeft: "10px"}}><h3 style={{marginBottom: "0"}}>{user.native !== "0" ? msg.userName : msg.nativeName}</h3><h2 style={{marginTop: "5px", backgroundColor: "#f0f3f4", padding: "15px", borderRadius: "20px", maxWidth: "50%", wordWrap: "break-word", fontWeight: "normal", borderBottomLeftRadius: "0"}}>{msg.content}</h2></div>
+            <div key={index} style={{display: "flex", flexDirection: "column", alignItems: "flex-start", marginLeft: "10px"}}><h2 style={{marginTop: "5px", backgroundColor: "#f0f3f4", padding: "15px", borderRadius: "20px", maxWidth: "50%", wordWrap: "break-word", fontWeight: "normal", borderBottomLeftRadius: "0"}}>{msg.content}</h2></div>
           ))}
         </div>
       </div>
       <div style={{display: "flex", backgroundColor: "white", flexWrap: "wrap", justifyContent: "space-between"}}>
         {/* <input type='text' value={sender} onChange={(e) => setSender(e.target.value)} placeholder='이름을 적어주세요' /> */}
-        <input type="text" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') sendMessage() }} placeholder='메시지를 적어주세요' style={{width: "90%", fontSize: "25px", border: "none", backgroundColor: "#f0f3f4", padding: "5px", borderRadius: "10px"}} className='chatInput' />
-        <button onClick={sendMessage} style={{border: "none", backgroundColor: "#5991d1", fontSize: "20px", borderRadius: "10px", color: "white"}}>전송</button>
+        <input type="text" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') sendMessage() }} placeholder='메시지를 적어주세요' style={{width: "90%", fontSize: "23px", border: "none", backgroundColor: "#f0f3f4", padding: "5px", borderRadius: "10px"}} className='chatInput' />
+        <button onClick={sendMessage} style={{border: "none", backgroundColor: "#5991d1", fontSize: "20px", borderRadius: "10px", color: "white", width: "8%"}}>전송</button>
       </div>
     </div>
     </>
